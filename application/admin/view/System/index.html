@@ -1,0 +1,164 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>基本设置</title>
+
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/header"}
+<!--/_header 作为公共模版分离出去-->
+
+<!--_menu 作为公共模版分离出去-->
+{include file="../../../public/public/menu"}
+<!--/_menu 作为公共模版分离出去-->
+<section class="Hui-article-box">
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 基本设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="Hui-article">
+        <article class="cl pd-20">
+            <form class="form form-horizontal">
+                <div id="tab-system" class="HuiTab">
+                    <div class="tabBar cl"><span>基本设置</span></div>
+                    <div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站名称：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="title" placeholder="控制在25个字、50个字节以内" value="{$system['web_title']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>关键词：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="keywords" placeholder="5个左右,8汉字以内,用英文,隔开" value="{$system['web_keywords']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>描述：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="desc" placeholder="控制制在80个汉字，160个字符以内" value="{$system['web_desc']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>底部版权信息：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="copyright" placeholder="&copy; 2014 H-ui.net" value="{$system['web_copyright']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2">备案号：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="icp" placeholder="京ICP备00000000号" value="{$system['web_icp']}" class="input-text">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2">是否关闭网站：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="checkbox" id="checkbox" status="{$system['web_is_open']}" data-id="{$system['system_id']}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                        <button onclick="article_save_submit(this);" class="btn btn-primary radius" type="button" data-id="{$system['system_id']}"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>-->
+<script type="text/javascript">
+    $(function(){
+        /* 初始化控件 */
+        $("#checkbox").bootstrapSwitch({
+            onText : "打开",      // 设置ON文本
+            offText : "关闭",    // 设置OFF文本
+            onColor : "success",// 设置ON文本颜色     (info/success/warning/danger/primary)
+            offColor : "info",  // 设置OFF文本颜色        (info/success/warning/danger/primary)
+            size : "normal",    // 设置控件大小,从小到大  (mini/small/normal/large)
+        });
+
+        //获取is_open
+        var status = $("#checkbox").attr('status');
+        //控制开关
+        if(status == 1){
+            $("#checkbox").bootstrapSwitch('state',true);
+        }else{
+            $("#checkbox").bootstrapSwitch('state',false);
+        }
+
+        //切换按钮改变值
+        $('#checkbox').on('switchChange.bootstrapSwitch', function (event,state) {
+            //获取status
+            var status = $(this).attr('status');
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type:"get",
+                url:"edit",
+                data:{status:status,id:id},
+                success:function(res){
+                    res = eval("("+res+")");
+                    if(res.status == 1){
+                        layer.msg(res.message,{icon: 6,time:1000},function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        layer.msg(res.message,{icon: 5,time:1000},function () {
+                            window.location.reload();
+                        });
+                    }
+                }
+            });
+        });
+    });
+
+    //修改公司系统信息
+    function article_save_submit(obj){
+        //获取修改后的内容
+        var title = $("#title").val();
+        var keywords = $("#keywords").val();
+        var desc = $("#desc").val();
+        var copyright = $("#copyright").val();
+        var icp = $("#icp").val();
+        var id = $(obj).attr('data-id');
+        //ajax提交到后台
+        $.ajax({
+            type: "post",
+            url: "edit",
+            data: {
+                title:title,
+                keywords:keywords,
+                desc:desc,
+                copyright:copyright,
+                icp:icp,
+                id:id,
+            },
+            success: function(res){
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('修改成功!',{icon: 6,time:1000},function(){
+                        window.location.reload();
+                    });
+                }else{
+                    layer.msg('修改失败!',{icon: 5,time:1000},function () {
+                        window.location.reload();
+                    });
+                }
+            }
+        });
+    }
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

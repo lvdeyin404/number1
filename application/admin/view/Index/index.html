@@ -1,0 +1,71 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+
+<title>贵州意八启久文化发展有限公司后台管理系统-首页</title>
+
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/header"}
+
+<!--_menu 作为公共模版分离出去-->
+{include file="../../../public/public/menu"}
+<!--/_menu 作为公共模版分离出去-->
+
+<section class="Hui-article-box">
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <span class="c-666">我的桌面</span>
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="Hui-article">
+        <article class="cl pd-20">
+            <p class="f-20 text-success">欢迎使用xxx
+                <span class="f-14">v2.3</span>
+                后台系统！
+            </p>
+            <p>用户名：{$userData['username']}</p>
+            <p>登录次数：{$userData['login_count']} </p>
+            <p>上次登录时间：{$userData['up_login_time']}</p>
+            <table class="table table-border table-bordered table-bg mt-20">
+                <thead>
+                <tr>
+                    <th colspan="2" scope="col">服务器信息</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th width="30%">服务器计算机名</th>
+                    <td><span id="lbServerName">{$_SERVER['SERVER_NAME'] }</span></td>
+                </tr>
+                {foreach $info as $k=>$v}
+                <tr>
+                    <td>{$k}</td>
+                    <td>{$v}</td>
+                </tr>
+                {/foreach}
+                <tr>
+                    <td>服务器端口 </td>
+                    <td>{$_SERVER['SERVER_PORT']}</td>
+                </tr>
+                <tr>
+                    <td>服务器系统目录 </td>
+                    <td>{$_SERVER['SystemRoot']}</td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+        <footer class="footer">
+            <p>感谢jQuery、layer、laypage、Validform、UEditor、My97DatePicker、iconfont、Datatables、WebUploaded、icheck、highcharts、bootstrap-Switch<br> Copyright &copy;2015 H-ui.admin v3.0 All Rights Reserved.<br> 本后台系统由<a href="http://www.h-ui.net/" target="_blank" title="H-ui前端框架">H-ui前端框架</a>提供前端技术支持</p>
+        </footer>
+    </div>
+</section>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

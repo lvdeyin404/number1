@@ -1,0 +1,112 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+<!--/meta 作为公共模版分离出去-->
+
+<title>联系我们</title>
+
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/header"}
+<!--/_header 作为公共模版分离出去-->
+
+<!--_menu 作为公共模版分离出去-->
+{include file="../../../public/public/menu"}
+<!--/_menu 作为公共模版分离出去-->
+<section class="Hui-article-box">
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 联系我们 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="Hui-article">
+        <article class="cl pd-20">
+            <form class="form form-horizontal">
+                <div id="tab-system" class="HuiTab">
+                    <div class="tabBar cl"><span>联系我们</span></div>
+                    <div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>公司名称：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="name" placeholder="公司电话" value="{$contact['name']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>公司电话：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="phone" placeholder="公司电话" value="{$contact['phone']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>公司邮箱：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="email" placeholder="邮箱" value="{$contact['email']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>qq：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="qq" placeholder="qq" value="{$contact['qq']}" class="input-text">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>公司地址：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" id="address" placeholder="公司地址" value="{$contact['address']}" class="input-text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                        <button onclick="article_save_submit(this);" class="btn btn-primary radius" type="button" data-id="{$contact['id']}"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>-->
+<script type="text/javascript">
+
+    //修改联系我们信息
+    function article_save_submit(obj){
+        //获取修改后的内容
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var qq = $("#qq").val();
+        var address = $("#address").val();
+        var name = $("#name").val();
+        var id = $(obj).attr('data-id');
+        //ajax提交到后台
+        $.ajax({
+            type: "post",
+            url: "contact",
+            data: {
+                phone:phone,
+                email:email,
+                qq:qq,
+                address:address,
+                name:name,
+                id:id,
+            },
+            success: function(res){
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('修改成功!',{icon: 6,time:1000},function(){
+                        window.location.reload();
+                    });
+                }else{
+                    layer.msg('修改失败!',{icon: 5,time:1000},function () {
+                        window.location.reload();
+                    });
+                }
+            }
+        });
+    }
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

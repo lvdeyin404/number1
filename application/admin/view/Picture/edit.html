@@ -1,0 +1,126 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>修改图片</title>
+    <link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-article-add">
+        <input type="hidden" value="{$picdataone['pic_id']}" id="id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">标签：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$picdataone['pic_tags']}" placeholder="" id="tags" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="is_status" id="is_status">
+                    {if $picdataone['is_status'] == 0}
+                    <option value="0" selected>不发布</option>
+                    <option value="1">发布</option>
+                    {elseif $picdataone['is_status'] == 1}
+                    <option value="1" selected>发布</option>
+                    <option value="0">不发布</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">当前图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="uploader-thum-container">
+                    <div>
+                        <img src="../../uploads/lunbo/{$picdataone['pic_path']}" height="30%" width="20%" id="image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">修改图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="uploader-thum-container">
+                    <div id="fileList" class="uploader-list"></div>
+                    <div id="filePicker">选择图片<input type="file" id="file"></div>
+                    <div style="margin-top: 10px;">
+                        <button type="button" class="btn btn-primary" onclick="upImage()">开始上传</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+                <button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>-->
+<script type="text/javascript">
+    //上传图片
+    function upImage() {
+        var id = $("#id").val();
+        var image = document.getElementById('file').files[0];
+        var fordata = new FormData();
+        fordata.append('image',image);
+        fordata.append('id',id);
+        $.ajax({
+            type: 'post',
+            url: 'uploads',
+            data: fordata,
+            cache:false,  //默认是true，但是一般不做缓存
+            processData:false, //用于对data参数进行序列化处理，这里必须false；如果是true，就会将FormData转换为String类型
+            contentType:false,  //一些文件上传http协议的关系，自行百度，如果上传的有文件，那么只能设置为false
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 0){
+                    layer.msg('上传成功!',{icon:1,time:2000})
+                    $("#image").attr('src','../../uploads/lunbo/'+res.data);
+                }else{
+                    layer.msg(res.message,{icon:2,time:2000})
+                }
+            }
+        });
+    }
+
+    //表单上传
+    function article_save_submit(){
+        var id = $("#id").val();
+        var tags = $("#tags").val();
+        var is_status = $("#is_status").val();
+        //提交服务器
+        $.ajax({
+            type: 'post',
+            url: 'edit',
+            data: {
+                id:id,
+                tags:tags,
+                is_status:is_status,
+            },
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('修改成功!',{icon:1,time:2000},function(){
+                        location.href='index';
+                    });
+                }else{
+                    layer.msg('修改失败!',{icon:1,time:2000},function(){
+                    });
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
