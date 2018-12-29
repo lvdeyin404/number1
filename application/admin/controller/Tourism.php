@@ -10,6 +10,6 @@ class Tourism extends Common
 {
     public function index()
     {
-
+        $this->fetch();
     }
 }
