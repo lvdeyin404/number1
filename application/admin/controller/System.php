@@ -86,7 +86,7 @@ class System extends Common
             $data = $request->param();
             $phone = $data['phone'];
             $email = $data['email'];
-            $qq = $data['qq'];
+            $fax = $data['fax'];
             $address = $data['address'];
             $name = $data['name'];
             $id = $data['id'];
@@ -97,7 +97,7 @@ class System extends Common
             if(!$email){
                 return Util::show(0,'请输入公司邮箱');
             }
-            if(!$qq){
+            if(!$fax){
                 return Util::show(0,'请输入公司qq');
             }
             if(!$address){
@@ -110,7 +110,7 @@ class System extends Common
             $update['name'] = $name;
             $update['phone'] = $phone;
             $update['email'] = $email;
-            $update['qq'] = $qq;
+            $update['fax'] = $fax;
             $update['address'] = $address;
             $res = Db::table('contact')->where(['id'=>$id])->update($update);
             if($res == 1 || $res == 0){

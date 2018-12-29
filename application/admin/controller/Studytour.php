@@ -118,6 +118,10 @@ class Studytour extends Common
             $cate_id = $data['cate_id'];
             $is_status = $data['is_status'];
             $content = $data['content'];
+            //判断是否输入title
+            if(empty($title)){
+                return Util::show('0','请输入标题');
+            }
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
             $content = strip_tags($content,"<p>");
