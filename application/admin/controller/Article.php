@@ -15,14 +15,33 @@ use think\Request;
 
 class Article extends Common
 {
-    //新闻首页
-    public function index()
+    //资讯
+    public function index(Request $request)
     {
-        //获取新闻资讯
-        $newsData = Db::table('news')->select();
-        $count = Db::table('news')->count();
-        $this->assign('news',$newsData);
-        $this->assign('count',$count);
+        if($request->isPost()){
+            //分类id
+            $cate_id = $request->param('cate_id');
+            //判断是否为全部信息
+            if($cate_id == 0){
+                //查询数据
+                $newsData = Db::table('news')->select();
+                $count = Db::table('news')->count();
+            }else{
+                //查询数据
+                $newsData = Db::table('news')->where(['cate_id'=>$cate_id])->select();
+                $count = Db::table('news')->where(['cate_id'=>$cate_id])->count();
+            }
+            $this->assign('cate_id',$cate_id);
+            $this->assign('news',$newsData);
+            $this->assign('count',$count);
+        }else{
+            //获取资讯
+            $newsData = Db::table('news')->select();
+            $count = Db::table('news')->count();
+            $this->assign('cate_id',0);
+            $this->assign('news',$newsData);
+            $this->assign('count',$count);
+        }
         return $this->fetch();
     }
 
@@ -65,8 +84,14 @@ class Article extends Common
             $title = $data['title'];
             $author = $data['author'];
             $source = $data['source'];
+            $cate_id = $data['cate_id'];
             $is_Release = $data['is_Release'];
             $content = $data['content'];
+            //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 content只保留p
+            $title = html_entity_decode($title);
+            $title = strip_tags($title);
+            $content = html_entity_decode($content);
+            $content = strip_tags($content,"<p>");
             //判断参数是否为为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -75,6 +100,7 @@ class Article extends Common
             $updata['new_title'] = $title;
             $updata['new_content'] = $content;
             $updata['source'] = $source;
+            $updata['cate_id'] = $cate_id;
             $updata['author'] = $author;
             $updata['is_Release'] = $is_Release;
             $res = Db::table('news')->where(['new_id'=>$id])->update($updata);
@@ -95,8 +121,14 @@ class Article extends Common
             $title = $data['title'];
             $author = $data['author'];
             $source = $data['source'];
+            $cate_id = $data['cate_id'];
             $is_Release = $data['is_Release'];
             $content = $data['content'];
+            //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
+            $title = html_entity_decode($title);
+            $title = strip_tags($title);
+            $content = html_entity_decode($content);
+            $content = strip_tags($content,"<p>");
             //图片文件
             $file = $request->file('image');
             //判断是否有文件上传
@@ -128,6 +160,7 @@ class Article extends Common
             $add['new_content'] = $content;
             $add['source'] = $source;
             $add['author'] = $author;
+            $add['cate_id'] = $cate_id;
             $add['is_Release'] = $is_Release;
             $add['add_time'] = date('Y-m-d H:i:s');
             $res = Db::table('news')->insert($add);

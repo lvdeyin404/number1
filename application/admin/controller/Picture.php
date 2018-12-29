@@ -15,13 +15,31 @@ use app\common\tools\Util;
 class Picture extends Common
 {
     //轮播图首页
-    public function index()
+    public function index(Request $request)
     {
-        //取出轮播数据
-        $picdata = Db::table('picture')->paginate(5);
-        $count = Db::table('picture')->count();
-        $this->assign('count',$count);
-        $this->assign('pic',$picdata);
+        if($request->isPost()){
+            //获取参数id
+            $id = $request->param('id');
+            if($id == 'all'){
+                //取出轮播数据
+                $picdata = Db::table('picture')->select();
+                $count = Db::table('picture')->count();
+            }else{
+                //通过id获取轮播数据
+                $picdata = Db::table('picture')->where(['cate_id'=>$id])->select();
+                $count = Db::table('picture')->where(['cate_id'=>$id])->count();
+            }
+            $this->assign('count',$count);
+            $this->assign('cate_id',$id);
+            $this->assign('pic',$picdata);
+        }else{
+            //取出轮播数据
+            $picdata = Db::table('picture')->select();
+            $count = Db::table('picture')->count();
+            $this->assign('count',$count);
+            $this->assign('cate_id',0);
+            $this->assign('pic',$picdata);
+        }
         return $this->fetch();
     }
 
@@ -41,6 +59,7 @@ class Picture extends Common
             //接收参数
             $data = $request->param();
             $tags = $data['tags'];
+            $cate_id = $data['cate_id'];
             $is_status = $data['is_status'];
             //图片文件
             $file = $request->file('image');
@@ -71,6 +90,7 @@ class Picture extends Common
             //修改数据库
             $add['pic_tags'] = $tags;
             $add['is_status'] = $is_status;
+            $add['cate_id'] = $cate_id;
             $add['update_time'] = date('Y-m-d H:i:s');
             $res = Db::table('picture')->insert($add);
             if($res){
@@ -79,6 +99,8 @@ class Picture extends Common
                 return Util::show(0,'添加失败');
             }
         }else{
+            $index = $request->param('index');
+            $this->assign('index',$index);
             return $this->fetch();
         }
     }
@@ -110,19 +132,27 @@ class Picture extends Common
         if($request->isGet()){
             //接收id
             $id = $request->param('id');
+            $index = $request->param('index');
             //通过id查询数据
             $picdataone = Db::table('picture')->where(['pic_id'=>$id])->find();
             $this->assign('picdataone',$picdataone);
+            //通过id查找cate_id
+            $cate_id = Db::table('picture')->field('cate_id')->where(['pic_id'=>$id])->find();
+            $cate_id = $cate_id['cate_id'];
+            $this->assign('cate_id',$cate_id);
+            $this->assign('index',$index);
             return $this->fetch();
         }elseif ($request->isPost()){
             //接收参数
             $data = $request->param();
             $id = $data['id'];
             $tags = $data['tags'];
+            $cate_id = $data['cate_id'];
             $is_status = $data['is_status'];
             //修改数据库
             $updata['pic_tags'] = $tags;
             $updata['is_status'] = $is_status;
+            $updata['cate_id'] = $cate_id;
             $res = Db::table('picture')->where(['pic_id'=>$id])->update($updata);
             if($res == 1 || $res == 0){
                 return Util::show(1,'修改成功');

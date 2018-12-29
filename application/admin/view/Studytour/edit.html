@@ -1,0 +1,108 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>修改</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+<body>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+        <input type="hidden" value="{$studyList['id']}" name="id" id="id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$studyList['title']}" placeholder="" id="title" name="title">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章分类：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="cate_id" id="cate_id" class="input-text" style="width: 100px">
+                    <option value="1" {if $cate_id eq 1}selected{/if}>行程特色</option>
+                    <option value="2" {if $cate_id eq 2}selected{/if}>游学意义</option>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="is_Release" id="release" class="input-text" style="width: 80px">
+                    {if $studyList['is_status'] == 0}
+                        <option value="0" selected>不发布</option>
+                        <option value="1">发布</option>
+                    {elseif $studyList['is_status'] == 1}
+                        <option value="1" selected>发布</option>
+                        <option value="0">不发布</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <!-- 加载编辑器的容器 -->
+                <textarea name="content" id="content">{$studyList['content']}</textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var content;
+    var ue = UE.getEditor('content');
+
+<!--表单上传-->
+    function article_save_submit(){
+        //获取编辑器内容
+        ue.ready(function() {
+            //获取html内容，返回: <p>hello</p>
+            content = ue.getContent();
+        });
+        var id = $("#id").val();
+        var title = $("#title").val();
+        var cate_id = $("#cate_id").val();
+        var is_status = $("#release").val();
+        var content = content;
+        //提交服务器
+        $.ajax({
+            type: 'post',
+            url: 'edit',
+            data: {
+                id:id,
+                title:title,
+                cate_id:cate_id,
+                is_status:is_status,
+                content:content,
+            },
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('修改成功!',{icon:1,time:2000},function(){
+                        location.href="<?php url('Studytour/index') ?>";
+                    });
+                }else{
+                    layer.msg('修改失败!',{icon:1,time:2000},function(){
+                    });
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

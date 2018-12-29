@@ -16,8 +16,32 @@
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 图片管理 <span class="c-gray en">&gt;</span> 图片列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="Hui-article">
         <article class="cl pd-20">
-            <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="picture_add('添加图片')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图片</a></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
-            <div class="mt-20">
+            <div class="cl pd-5 bg-1 bk-gray"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="picture_add('添加图片')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图片</a></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+            <div class="text-c mt-5" style="text-align: left">
+                <form action="index" method="post">
+				<span class="select-box inline">
+				<select name="id" class="select">
+                    <option value="all">全部</option>
+                    {$cate_id}
+                    <option value="1" {if $cate_id eq 1}selected{/if}>首页</option>
+                    <option value="2" {if $cate_id eq 2}selected{/if}>简介</option>
+                    <option value="3" {if $cate_id eq 3}selected{/if}>大事记</option>
+                    <option value="4" {if $cate_id eq 4}selected{/if}>留学</option>
+                    <option value="5" {if $cate_id eq 5}selected{/if}>游学</option>
+                    <option value="6" {if $cate_id eq 6}selected{/if}>旅游</option>
+                    <option value="7" {if $cate_id eq 7}selected{/if}>经贸</option>
+                    <option value="8" {if $cate_id eq 8}selected{/if}>报名</option>
+                    <option value="9" {if $cate_id eq 9}selected{/if}>语言学校</option>
+                    <option value="10" {if $cate_id eq 10}selected{/if}>旅游中的游学轮播</option>
+                    <option value="11" {if $cate_id eq 11}selected{/if}>语言课堂</option>
+                    <option value="12" {if $cate_id eq 12}selected{/if}>主题出游</option>
+                    <option value="13" {if $cate_id eq 13}selected{/if}>合作单位</option>
+				</select>
+				</span>
+                    <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
+                </form>
+            </div>
+            <div class="mt-5">
                 <table class="table table-border table-bordered table-bg table-hover table-sort">
                     <thead>
                     <tr class="text-c">
@@ -57,9 +81,9 @@
                     {/foreach}
                     </tbody>
                 </table>
-                <div class="page">
-                    {$pic|raw}
-                </div>
+                <!--<div class="page">-->
+
+                <!--</div>-->
             </div>
         </article>
     </div>
@@ -95,7 +119,7 @@
         var index = layer.open({
             type: 2,
             title: title,
-            content: 'add'
+            content: 'add?index='+index
         });
         layer.full(index);
     }
