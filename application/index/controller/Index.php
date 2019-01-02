@@ -10,7 +10,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 
-class Index extends Controller
+class Index extends Common
 {
     public function index()
     {
@@ -35,6 +35,7 @@ class Index extends Controller
         $this->assign('news',$news);
         $this->assign('about',$about);
         $this->assign('links',$links);
+        dump();
         return $this->fetch();
     }
 }

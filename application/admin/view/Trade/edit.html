@@ -1,0 +1,76 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>修改</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+</head>
+<body>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+        <input type="hidden" value="{$editList['id']}" name="id" id="id">
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <!-- 加载编辑器的容器 -->
+                <textarea name="container" id="container">{$editList['content']}</textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+
+<!--表单上传-->
+    function article_save_submit(){
+        var html;
+        //获取编辑器内容
+        ue.ready(function() {
+            //获取html内容，返回: <p>hello</p>
+            html = ue.getContent();
+        });
+        var id = $("#id").val();
+        var title = $("#title").val();
+        var content = html;
+        //提交服务器
+        $.ajax({
+            type: 'post',
+            url: 'edit',
+            data: {
+                id:id,
+                title:title,
+                content:content,
+            },
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('修改成功!',{icon:1,time:2000},function(){
+                        location.href="<?php url('Profile/index') ?>";
+                    });
+                }else{
+                    layer.msg('修改失败!',{icon:1,time:2000},function(){
+                    });
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
