@@ -1,0 +1,65 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/meta"}
+<!--/meta 作为公共模版分离出去-->
+
+<title>删除院校分类</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+</head>
+<body>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">待删除分类：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="cate_id" id="cate_id" class="input-text" style="width: 100px">
+                    {foreach $catelist as $v}
+                    <option value="{$v['id']}" selected>{:str_repeat('—',$v['level'])}{$v['school_cate']}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 确认删除</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<script type="text/javascript">
+
+<!--表单上传-->
+    function article_save_submit(){
+        var id = $("#cate_id").val();
+
+        var fordata = new FormData();
+        fordata.append('id',id);
+        //提交服务器
+        $.ajax({
+            type: 'post',
+            url: 'delSchoolCate',
+            data: fordata,
+            cache:false,  //默认是true，但是一般不做缓存
+            processData:false, //用于对data参数进行序列化处理，这里必须false；如果是true，就会将FormData转换为String类型
+            contentType:false,  //一些文件上传http协议的关系，自行百度，如果上传的有文件，那么只能设置为false
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg('删除成功!',{icon:1,time:2000},function(){
+                        location.href="<?php url('Overstudy/index') ?>";
+                    });
+                }else{
+                    layer.msg(res.message,{icon:2,time:2000},function(){
+                    });
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

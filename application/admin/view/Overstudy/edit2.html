@@ -14,13 +14,13 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>学校名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="{$schoolList['school_name']}" placeholder="" id="name" name="name">
+                <input type="text" class="input-text" value="{$schoolList['school_name']}" placeholder="" id="name" name="name" style="width: 150px">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">所属分类：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="cate" id="cate">
+                <select name="cate" id="cate" class="input-text" style="width: 100px">
                     {foreach $cateList as $val}
                         <option value="{$val['id']}" {if $pid eq $val['id']}selected{/if}>{:str_repeat('—',$val['level'])}{$val['school_cate']}</option>
                     {/foreach}
@@ -30,7 +30,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="is_status" id="is_status">
+                <select name="is_status" id="is_status" class="input-text" style="width: 100px">
                     {if $schoolList['is_status'] == 0}
                     <option value="0" selected>不发布</option>
                     <option value="1">发布</option>

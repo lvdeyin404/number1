@@ -2,7 +2,7 @@
 {include file="../../../public/public/meta"}
 <!--/meta 作为公共模版分离出去-->
 
-<title>新增</title>
+<title>新增院校分类</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 </head>
@@ -10,40 +10,20 @@
 <article class="page-container">
     <form class="form form-horizontal" id="form-article-add">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>院校名称：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="name" name="name" style="width: 150px">
+                <input type="text" class="input-text" value="" placeholder="" id="cate" name="cate" style="width: 150px">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">分类：</label>
+            <label class="form-label col-xs-4 col-sm-2">分类级别：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="cate" id="cate" class="input-text" style="width: 100px">
-                    {foreach $cateList as $val}
-                        <option value="{$val['id']}" selected>{:str_repeat('—',$val['level'])}{$val['school_cate']}</option>
+                <select name="pid" id="pid" class="input-text" style="width: 100px">
+                    <option value="0">顶级分类</option>
+                    {foreach $cateList as $v}
+                    <option value="{$v['id']}" >{$v['school_cate']}</option>
                     {/foreach}
                 </select>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <select name="is_status" id="is_status" class="input-text" style="width: 100px">
-                    <option value="1" selected>发布</option>
-                    <option value="0" selected>不发布</option>
-                </select>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <div class="uploader-thum-container">
-                    <div id="fileList" class="uploader-list"></div>
-                    <div id="filePicker">
-                        选择图片
-                        <input type="file" name="image" id="image" />
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row cl">
@@ -60,22 +40,18 @@
 
 <script type="text/javascript">
 
-    <!--表单上传-->
+<!--表单上传-->
     function article_save_submit(){
-        var name = $("#name").val();
-        var is_status = $("#is_status").val();
-        var cate = $("#cate").val();
-        var image = document.getElementById("image").files[0];
+        var cateName = $("#cate").val();
+        var id = $("#pid").val();
 
         var fordata = new FormData();
-        fordata.append('name',name);
-        fordata.append('cate_id',cate);
-        fordata.append('is_status',is_status);
-        fordata.append('image',image);
+        fordata.append('cateName',cateName);
+        fordata.append('pid',id);
         //提交服务器
         $.ajax({
             type: 'post',
-            url: 'add2',
+            url: 'addSchoolCate',
             data: fordata,
             cache:false,  //默认是true，但是一般不做缓存
             processData:false, //用于对data参数进行序列化处理，这里必须false；如果是true，就会将FormData转换为String类型
@@ -84,7 +60,7 @@
                 res = eval("("+res+")");
                 if(res.status == 1){
                     layer.msg('添加成功!',{icon:1,time:2000},function(){
-                        // location.href="<?php url('Overstudy/index') ?>";
+                        location.href="<?php url('Overstudy/school') ?>";
                     });
                 }else{
                     layer.msg('添加失败!',{icon:1,time:2000},function(){

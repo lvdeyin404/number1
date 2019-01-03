@@ -8,6 +8,7 @@
  */
 namespace app\admin\controller;
 use app\common\tools\Util;
+use App\Utility\Redis;
 use Think\Db;
 use think\Request;
 
@@ -279,6 +280,31 @@ class Overstudy extends Common
     }
 
     /**
+     * 添加院校分类
+     * @param Request $request
+     */
+    public function addSchoolCate(Request $request)
+    {
+        if($request->isPost()){
+            //获取分类名称以及pid
+            $cateName = $request->param('cateName');
+            $pid = intval($request->param('pid'));
+            $add['school_cate'] = $cateName;
+            $add['pid'] = $pid;
+            $res = Db::table('cate_school')->insert($add);
+            if($res){
+                return Util::show('1','添加成功');
+            }
+        }else{
+            //获取院校分类
+            $cateList = Db::table('cate_school')->where(['pid'=>0])->select();
+//            $this->category_list($schoolCate,$cateList);
+            $this->assign('cateList',$cateList);
+            return $this->fetch();
+        }
+    }
+
+    /**
      * 修改
      * @param Request $request
      * @return mixed|string
@@ -434,6 +460,46 @@ class Overstudy extends Common
             }
         }else{
             $this->error('非法操作','http://www.baidu.com');
+        }
+    }
+
+    /**
+     * 删除院校分类
+     * @param Request $request
+     */
+    public function delSchoolCate(Request $request)
+    {
+        if($request->isAjax()){
+            //获取id
+            $id = intval($request->param('id'));
+            //判断该分类下是否有子分类
+            $cateData = Db::table('cate_school')->select();
+            $this->categort_subid($cateData,$ids, $id);
+            if($ids){
+                //该分类下有子分类  提醒用户不能删除
+                return Util::show('0','该分类下还有子分类，不能删除');
+            }else{
+                //判断分类下是否有数据
+                $schoolData = Db::table('school')->where(['pid'=>$id])->select();
+                if($schoolData){
+                    //有数据   返回用户不能删除
+                    return Util::show('0','该分类下有数据，不能删除');
+                }else{
+                    //可以删除
+                    $res = Db::table('cate_school')->where(['id'=>$id])->delete();
+                    if($res){
+                        return Util::show('1','删除成功');
+                    }else{
+                        return Util::show('0','删除失败');
+                    }
+                }
+            }
+        }else{
+            //获取所有分类
+            $schoolData = Db::table('cate_school')->select();
+            $this->category_list($schoolData, $cateList);
+            $this->assign('catelist', $cateList);
+            return $this->fetch();
         }
     }
 

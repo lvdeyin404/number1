@@ -38,6 +38,9 @@
 				</select>
 				</span>
                     <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
+                    <!--<button name="" id="" class="btn btn-success" type="button" onclick="location.href='addSchoolCate'"><i class="Hui-iconfont">&#xe600;</i> 添加院校分类</button>-->
+                    <a class="btn btn-primary radius" data-title="添加院校分类" onclick="article_add2('添加分类')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加院校分类</a>
+                    <a class="btn btn-danger radius" data-title="删除院校分类" onclick="schoolCate_del('删除分类')" href="javascript:;"><i class="Hui-iconfont">&#xe6e2;</i> 删除院校分类</a>
                 </form>
             </div>
             <div class="mt-5">
@@ -119,6 +122,26 @@
         });
         layer.full(index);
     }
+
+    function schoolCate_del(title) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: 'delSchoolCate'
+        });
+        layer.full(index);
+    }
+
+    /*资讯-添加院校分类*/
+    function article_add2(title,url,w,h){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: 'addSchoolCate'
+        });
+        layer.full(index);
+    }
+
     /*资讯-编辑*/
     function article_edit(title,id,w,h){
         var index = layer.open({
