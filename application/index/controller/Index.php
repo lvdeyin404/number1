@@ -18,24 +18,24 @@ class Index extends Common
         $indexImg = Db::table('picture')->where(['cate_id'=>1,'is_status'=>1])->select();
 
         //公司简介
-        $profile = Db::table('profile')->select();
-        $profile = $profile[0];
+        $profile = Db::table('profile')->find();
 
-        //公司大事记 cate_id=1  is_status=1
-        $news = Db::table('news')->where(['cate_id'=>1,'is_status'=>1])->select();
+        //我们的服务 table--news  cate_id=6  is_status=1
+        $news = Db::table('news')->where(['cate_id'=>6,'is_Release'=>1])->limit(3)->select();
 
         //重要合作(关于)
-        $about = Db::table('econ_trade')->where(['is_status'=>1])->select();
+        $about = Db::table('trade')->limit(1)->find();
 
         //友情链接  cate_id=13 is_status=1
-        $links = Db::table('picture')->where(['cate_id=>13','is_status'=>1])->select();
-
+        $links = Db::table('picture')->where(['cate_id'=>13,'is_status'=>1])->select();
         $this->assign('indexImg',$indexImg);
         $this->assign('profile',$profile);
         $this->assign('news',$news);
         $this->assign('about',$about);
         $this->assign('links',$links);
-        dump();
+        $this->assign('footer',$this->footer);
+        $this->assign('systemctl',$this->systemctl);
+        $this->assign('logo',$this->logo);
         return $this->fetch();
     }
 }

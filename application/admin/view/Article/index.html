@@ -1,13 +1,13 @@
 <!--_meta 作为公共模版分离出去-->
-{include file="../../../public/public/meta"}
+{include file="../../../public/public/admin/meta"}
 
 <title>资讯管理</title>
 
 <!--_header 作为公共模版分离出去-->
-{include file="../../../public/public/header"}
+{include file="../../../public/public/admin/header"}
 
 <!--_menu 作为公共模版分离出去-->
-{include file="../../../public/public/menu"}
+{include file="../../../public/public/admin/menu"}
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
@@ -37,6 +37,7 @@
                     <option value="3" {if $cate_id eq 3}selected{/if}>热门新闻</option>
                     <option value="4" {if $cate_id eq 4}selected{/if}>热点资讯</option>
                     <option value="5" {if $cate_id eq 5}selected{/if}>行业资讯</option>
+                    <option value="6" {if $cate_id eq 6}selected{/if}>我们的服务</option>
 				</select>
 				</span>
                 <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
@@ -70,6 +71,7 @@
                                 {case 3}热门新闻{/case}
                                 {case 4}热点资讯{/case}
                                 {case 5}行业资讯{/case}
+                                {case 6}我们的服务{/case}
                                 {default /}
                                 {/switch}
                             </td>
@@ -102,7 +104,7 @@
 </section>
 
 <!--_footer 作为公共模版分离出去-->
-{include file="../../../public/public/footer"}
+{include file="../../../public/public/admin/footer"}
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->

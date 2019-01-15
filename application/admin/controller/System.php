@@ -47,7 +47,8 @@ class System extends Common
             $title = $data['title'];
             $keywords = $data['keywords'];
             $desc = $data['desc'];
-            $copyright = $data['copyright'];
+            $copyright = html_entity_decode($data['copyright']);
+            $copyright = strip_tags($copyright,"&copy;");
             $icp = $data['icp'];
             $id = $data['id'];
             //验证数据

@@ -1,0 +1,155 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>意八启久-首页</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+    <!-- Banner轮播图 -->
+    <div class="swiper-container index-banner">
+        <div class="swiper-wrapper">
+            {foreach $indexImg as $v}
+                <div class="swiper-slide">
+                    <img src="/uploads/lunbo/{$v['pic_path']}" alt="{$v['pic_tags']}" style="width: 100%;">
+                </div>
+            {/foreach}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next index-banner-next"></div>
+        <div class="swiper-button-prev index-banner-prev"></div>
+    </div>
+
+    <!-- 小导航 -->
+    <div class="container">
+        <div class="row xdhfj">
+            <div class="col-tl-12 xdh01">
+                <img class="col-tl-3 col-mb-3" src="/static/Index/img/img01/img0108.jpg" alt="img0108.jpg" width="100%">
+                <img class="col-tl-3 col-mb-3" src="/static/Index/img/img01/img0109.jpg" alt="img0109.jpg" width="100%">
+                <img class="col-tl-3 col-mb-3" src="/static/Index/img/img01/img0110.jpg" alt="img0110.jpg" width="100%">
+                <img class="col-tl-3 col-mb-3" src="/static/Index/img/img01/img0111.jpg" alt="img0111.jpg" width="100%">
+            </div>
+            <div class="col-tl-12 text-align-c bg-baise xdh02">
+                <div class="col-tl-3 col-mb-3 ybqjfontsize20px SourceHanSansCN-Bold font-lanse">公司简介</div>
+                <div class="col-tl-3 col-mb-3 ybqjfontsize20px SourceHanSansCN-Bold font-lanse">公司大事记</div>
+                <div class="col-tl-3 col-mb-3 ybqjfontsize20px SourceHanSansCN-Bold font-lanse">重要合作</div>
+                <div class="col-tl-3 col-mb-3 ybqjfontsize20px SourceHanSansCN-Bold font-lanse">友情链接</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 首页公司简介大事记合作链接 -->
+    <div class="sygsjdhl">
+        <div class="container">
+            <!-- 公司简介 -->
+            <div class="row overflow-hidden">
+                <div class="col-tl-3">
+                    <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse sygsjjtype">公司简介</div>
+                    <div class="Arial-Regular ybqjfontsize24px font-lanse sygsjjtype-en">COMPANY PROFILE</div>
+                </div>
+                <div class="col-tl-9 SourceHanSansCN-Light ybqjfontsize18px text-align-j sygsjjzw">
+                    <?php echo $profile['content'] ?>
+                    <!--<p>贵州意八启久文化发展有限公司于2018年7月9日成立，注册资本为300万元，公司经营项目多元化、国际化，主要涉及旅游产业、教育产业、文化产业、策划与咨询、国际贸易等。公司CEO及部分股东系毕业于意大利公立名校，并常年旅居意大利，对意大利的人文风情有深刻的理解。</p>-->
+                    <!--<p class="hidden-mb sygsjjzw02">公司自成立以来奉行的宗旨就是：开创前端合作新时代，推文化世界之巅峰。</p>-->
+                </div>
+            </div>
+            <!-- 我们的服务 -->
+            <div class="row">
+                <div class="col-tl-12">
+                    <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse sygsjjtype">我们的服务</div>
+                    <div class="Arial-Regular ybqjfontsize24px font-lanse sygsjjtype-en">OUR SERVICES</div>
+                </div>
+                <div class="col-tl-12 syourserviceszw">
+                    <div class="row">
+                        {foreach $news as $v}
+                            <div class="col-tl-4 syourserviceszwzj">
+                                <div class="row">
+                                    <img class="cursor-pointer syourservicesimg" src="/uploads/{$v['pic_path']}" style="width: 100%;">
+                                </div>
+                                <div class="padding-lr-15px syourserviceszwzj02">
+                                    <div class="ybqjfontsize18px SourceHanSansCN-Bold font-heise bg-baise padding-lr-15px syourserviceszwzj0201">{$v['new_title']}</div>
+                                    <div class="ybqjfontsize14px SourceHanSansCN-Regular font-heise text-align-j bg-baise padding-lr-15px syourserviceszwzj0202">
+                                        {$v['new_content']|strip_tags}
+                                    </div>
+                                    <span class="ybqjfontsize14px cursor-pointer display-inline-block syourserviceszwzj0203">more+</span>
+                                </div>
+                            </div>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <!-- 重要合作 -->
+            <div class="row overflow-hidden syzyhz">
+                <div class="col-tl-12">
+                    <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse sygsjjtype syzyhzdbt">重要合作</div>
+                    <div class="Arial-Regular ybqjfontsize24px font-lanse sygsjjtype-en syzyhzdbt-en">IMPORTANT
+                        COOPERATION</div>
+                </div>
+                <div class="col-tl-12 syzyhzzw">
+                    <div class="row">
+                        <img class="col-tl-5 hidden-mb cursor-pointer syzyhzzwimg" src="/static/Index/img/img01/img0116.jpg" alt="img0116.jpg"
+                            width="100%">
+                        <div class="col-tl-7 syzyhzzw02">
+                            <p class="SourceHanSansCN-Light ybqjfontsize18px text-align-j syzyhzzw0201">
+                                <?php echo $about['content'] ?>
+                            </p>
+                            <!--<p class="SourceHanSansCN-Light ybqjfontsize18px text-align-j hidden-mb syzyhzzw0202">-->
+                                <!--此外本公司与意大利贝拉旅游有限公司（Beila Viaggi）达成战略合作协议，已将多条-->
+                                <!--贵州经典与原生态的少数民族体验路线推广至意大利，意大利方面也正在进行相关的推-->
+                                <!--广宣传工作的安排。-->
+                            <!--</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 友情链接 -->
+            <div class="row overflow-hidden">
+                <div class="col-tl-12">
+                    <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse sygsjjtype">友情链接</div>
+                    <div class="Arial-Regular ybqjfontsize24px font-lanse sygsjjtype-en">COMMERCIAL CHAIN</div>
+                </div>
+                <div class="col-tl-12 syyqljzw">
+                    <div class="row">
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-2 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-6 col-mb-4 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-tl-4 col-mb-3 syyqljimg">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{include file="../../../public/public/index/footer"}
+
+    <!-- JS -->
+    <script>
+        // 去掉click的300ms延迟响应
+        window.addEventListener("load", function () {
+            FastClick.attach(document.body);
+        }, false)
+    </script>
+    <script src="/static/Index/js/ybqj.js"></script>
+</body>
+
+</html>

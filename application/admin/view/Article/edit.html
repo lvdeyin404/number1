@@ -1,5 +1,5 @@
 <!--_meta 作为公共模版分离出去-->
-{include file="../../../public/public/meta"}
+{include file="../../../public/public/admin/meta"}
     <!--/meta 作为公共模版分离出去-->
 
     <title>修改文章 - 资讯管理</title>
@@ -11,25 +11,25 @@
     <form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
         <input type="hidden" value="{$news['new_id']}" name="id" id="id">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="{$news['new_title']}" placeholder="" id="title" name="title">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
+            <label class="form-label col-xs-4 col-sm-2">作者：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="{$news['author']}" placeholder="" id="author" name="author">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章来源：</label>
+            <label class="form-label col-xs-4 col-sm-2">来源：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="{$news['source']}" placeholder="" id="source" name="source">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章分类：</label>
+            <label class="form-label col-xs-4 col-sm-2">分类：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="cate_id" id="cate_id">
                     <option value="1" {if $news['cate_id'] eq 5}selected{/if}>公司新闻</option>
@@ -37,6 +37,7 @@
                     <option value="3" {if $news['cate_id'] eq 5}selected{/if}>热门新闻</option>
                     <option value="4" {if $news['cate_id'] eq 5}selected{/if}>热点资讯</option>
                     <option value="5" {if $news['cate_id'] eq 5}selected{/if}>行业资讯</option>
+                    <option value="6" {if $news['cate_id'] eq 6}selected{/if}>我们的服务</option>
                 </select>
             </div>
         </div>
@@ -78,7 +79,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+            <label class="form-label col-xs-4 col-sm-2">内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <!--<textarea cols="150" rows="10" name="content" id="content">{$news['new_content']}</textarea>-->
                 <!-- 加载编辑器的容器 -->
@@ -94,7 +95,7 @@
 </article>
 
 <!--_footer 作为公共模版分离出去-->
-{include file="../../../public/public/footer"}
+{include file="../../../public/public/admin/footer"}
 <!--/_footer /作为公共模版分离出去-->
 
 <!-- 配置文件 -->

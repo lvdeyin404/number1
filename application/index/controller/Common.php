@@ -13,12 +13,16 @@ use think\Db;
 class Common extends Controller
 {
     public $footer;
+    public $systemctl;
+    public $logo;
 
     //获取底部footer  每个页面都有 提取出来
     public function initialize()
     {
         parent::initialize();
-        $this->footer = Db::table('contact')->select();
+        $this->logo = Db::table('picture')->where(['is_status'=>1,'cate_id'=>15])->find();
+        $this->footer = Db::table('contact')->find();
+        $this->systemctl = Db::table('systemctl')->find();
     }
 
     //获得一维数组分类列表

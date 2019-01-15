@@ -1,15 +1,15 @@
 <!--_meta 作为公共模版分离出去-->
-{include file="../../../public/public/meta"}
+{include file="../../../public/public/admin/meta"}
     <!--/meta 作为公共模版分离出去-->
 
 <title>图片管理</title>
 
 <!--_header 作为公共模版分离出去-->
-{include file="../../../public/public/header"}
+{include file="../../../public/public/admin/header"}
 <!--/_header 作为公共模版分离出去-->
 
 <!--_menu 作为公共模版分离出去-->
-{include file="../../../public/public/menu"}
+{include file="../../../public/public/admin/menu"}
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
@@ -22,7 +22,6 @@
 				<span class="select-box inline">
 				<select name="id" class="select">
                     <option value="all">全部</option>
-                    {$cate_id}
                     <option value="1" {if $cate_id eq 1}selected{/if}>首页</option>
                     <option value="2" {if $cate_id eq 2}selected{/if}>简介</option>
                     <option value="3" {if $cate_id eq 3}selected{/if}>大事记</option>
@@ -36,7 +35,8 @@
                     <option value="11" {if $cate_id eq 11}selected{/if}>语言课堂</option>
                     <option value="12" {if $cate_id eq 12}selected{/if}>主题出游</option>
                     <option value="13" {if $cate_id eq 13}selected{/if}>合作单位</option>
-                    <option value="14" {if $cate_id eq 13}selected{/if}>员工风貌</option>
+                    <option value="14" {if $cate_id eq 14}selected{/if}>员工风貌</option>
+                    <option value="15" {if $cate_id eq 15}selected{/if}>公司logo</option>
 				</select>
 				</span>
                     <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
@@ -91,7 +91,7 @@
 </section>
 
 <!--_footer 作为公共模版分离出去-->
-{include file="../../../public/public/footer"}
+{include file="../../../public/public/admin/footer"}
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->

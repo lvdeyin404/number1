@@ -1,0 +1,98 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/admin/meta"}
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>修改</title>
+</head>
+<body>
+<article class="cl pd-20">
+    <form class="form form-horizontal">
+        <input type="hidden" value="{$entrydata['id']}" id="id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$entrydata['name']}" placeholder="" id="name" name="name" style="width: 120px">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">电话：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" autocomplete="off" value="{$entrydata['phone']}" placeholder="电话号码" id="phone" name="phone" style="width: 120px">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">报名项目：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="cate" id="cate" class="input-text" style="width: 120px">
+                    {foreach $entrycatelist as $v}
+                        <option value="{$v['id']}" {if $entrydata['cate_id'] eq $v['id']}selected{/if}>{$v['cate_name']}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">住址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" autocomplete="off" value="{$entrydata['address']}" placeholder="住址" id="address" name="address">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">状态：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="cate" id="status" class="input-text" style="width: 120px">
+                    <option value="1" {if $entrydata['status'] eq 1}selected{/if}>已审核</option>
+                    <option value="0" {if $entrydata['status'] eq 0}selected{/if}>未审核</option>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="button" onclick="on_submit()"  value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../../../public/public/admin/footer"}
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>-->
+<script type="text/javascript">
+    //上传表单
+    function on_submit(){
+        var id = $("#id").val();
+        var name = $('#name').val();
+        var phone = $('#phone').val();
+        var cate = $('#cate').val();
+        var address = $('#address').val();
+        var status = $('#status').val();
+        $.ajax({
+           type: 'post',
+           url: 'edit',
+           data: {
+             id:id,
+             name:name,
+             phone:phone,
+             cate:cate,
+             address:address,
+             status:status
+           },
+            success: function (res) {
+                res = eval("("+res+")");
+                if(res.status == 1){
+                    layer.msg(res.message,{icon:6,time:2000},function () {
+                    })
+                }else{
+                    layer.msg(res.message,{icon:5,time:2000})
+                }
+            }
+        });
+    }
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
