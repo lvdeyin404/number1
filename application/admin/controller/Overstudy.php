@@ -18,7 +18,7 @@ class Overstudy extends Common
     public function play()
     {
         //获取数据
-        $playdata = Db::table('overstudy')->where(['cate_id'=>1])->select();
+        $playdata = Db::table('overstudy')->where(['cate_id'=>1])->paginate(10);
         $count = Db::table('overstudy')->where(['cate_id'=>1])->count();
         $this->assign('playList',$playdata);
         $this->assign('count',$count);
@@ -29,7 +29,7 @@ class Overstudy extends Common
     public function grade()
     {
         //获取数据
-        $gradedata = Db::table('overstudy')->where(['cate_id'=>2])->select();
+        $gradedata = Db::table('overstudy')->where(['cate_id'=>2])->paginate(10);
         $count = Db::table('overstudy')->where(['cate_id'=>2])->count();
         $this->assign('gradeList',$gradedata);
         $this->assign('count',$count);
@@ -40,7 +40,7 @@ class Overstudy extends Common
     public function campus()
     {
         //获取数据
-        $campusdata = Db::table('overstudy')->where(['cate_id'=>3])->select();
+        $campusdata = Db::table('overstudy')->where(['cate_id'=>3])->paginate(10);
         $count = Db::table('overstudy')->where(['cate_id'=>3])->count();
         $this->assign('campusList',$campusdata);
         $this->assign('count',$count);
@@ -51,7 +51,7 @@ class Overstudy extends Common
     public function team()
     {
         //获取数据
-        $teamData = Db::table('overstudy')->where(['cate_id'=>4])->select();
+        $teamData = Db::table('overstudy')->where(['cate_id'=>4])->paginate(10);
         $count = Db::table('overstudy')->where(['cate_id'=>4])->count();
         $this->assign('teamList',$teamData);
         $this->assign('count',$count);
@@ -62,7 +62,7 @@ class Overstudy extends Common
     public function successanli()
     {
         //获取数据
-        $successdata = Db::table('overstudy')->where(['cate_id'=>5])->select();
+        $successdata = Db::table('overstudy')->where(['cate_id'=>5])->paginate(10);
         $count = Db::table('overstudy')->where(['cate_id'=>5])->count();
         $this->assign('successList',$successdata);
         $this->assign('count',$count);

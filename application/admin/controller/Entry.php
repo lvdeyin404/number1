@@ -12,7 +12,7 @@ use think\Controller;
 use Think\Db;
 use think\Request;
 
-class Entry extends Controller
+class Entry extends Common
 {
     public function index(Request $request)
     {
@@ -22,31 +22,33 @@ class Entry extends Controller
             $id = $request->param('cate');
             if ($id == 3) {
                 //获取用户报名列表
-                $entryData = Db::table('entry')->select();
+                $entryData = Db::table('entry')->paginate(10);
                 //获取count
                 $count = Db::table('entry')->count();
             } else {
                 //获取用户报名列表
-                $entryData = Db::table('entry')->where(['status' => $id])->select();
+                $entryData = Db::table('entry')->where(['status' => $id])->paginate(10);
                 //获取count
                 $count = Db::table('entry')->where(['status' => $id])->count();
             }
         } else {
             $id = 3;
             //获取用户报名列表
-            $entryData = Db::table('entry')->select();
+            $entryData = Db::table('entry')->paginate(10);
             //获取count
             $count = Db::table('entry')->count();
         }
-        foreach ($entryData as $k => $v) {
-            $entryData[$k]['id'] = $v['id'];
-            $entryData[$k]['name'] = $v['name'];
-            $entryData[$k]['phone'] = $v['phone'];
-            $entryData[$k]['address'] = $v['address'];
-            $entryData[$k]['create_at'] = $v['create_at'];
-            $entryData[$k]['status'] = $v['status'];
-            $entryData[$k]['cate'] = Db::table('entry_cate')->field('cate_name')->where(['id' => $v['cate_id']])->find();
+        $entryArr = $entryData->toArray()['data'];
+        foreach ($entryArr as $k => $v) {
+            $entryArr[$k]['id'] = $v['id'];
+            $entryArr[$k]['name'] = $v['name'];
+            $entryArr[$k]['phone'] = $v['phone'];
+            $entryArr[$k]['address'] = $v['address'];
+            $entryArr[$k]['create_at'] = $v['create_at'];
+            $entryArr[$k]['status'] = $v['status'];
+            $entryArr[$k]['cate']['cate_name'] = Db::table('entry_cate')->field('cate_name')->where(['id' => $v['cate_id']])->find()['cate_name'];
         }
+        $this->assign('entryArr', $entryArr);
         $this->assign('entrylist', $entryData);
         $this->assign('count', $count);
         $this->assign('status', $id);

@@ -25,11 +25,11 @@ class Article extends Common
             //判断是否为全部信息
             if($cate_id == 0){
                 //查询数据
-                $newsData = Db::table('news')->select();
+                $newsData = Db::table('news')->paginate(10);
                 $count = Db::table('news')->count();
             }else{
                 //查询数据
-                $newsData = Db::table('news')->where(['cate_id'=>$cate_id])->select();
+                $newsData = Db::table('news')->where(['cate_id'=>$cate_id])->paginate(10);
                 $count = Db::table('news')->where(['cate_id'=>$cate_id])->count();
             }
             $this->assign('cate_id',$cate_id);
@@ -37,7 +37,7 @@ class Article extends Common
             $this->assign('count',$count);
         }else{
             //获取资讯
-            $newsData = Db::table('news')->select();
+            $newsData = Db::table('news')->paginate(10);
             $count = Db::table('news')->count();
             $this->assign('cate_id',0);
             $this->assign('news',$newsData);

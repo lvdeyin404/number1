@@ -20,6 +20,10 @@ class Login extends Controller
      */
     public function index(Request $request)
     {
+        //判断是否登录 登录就跳转
+        if(session('?userinfo')){
+            $this->redirect('Index/index');
+        }
         if($request->isPost()){
             //接收用户名密码 验证码
             $username = $request->param('username');
@@ -47,7 +51,7 @@ class Login extends Controller
                 $data['login_count'] = $userinfo['login_count'] + 1;
                 if($adminModel->save($data,['id'=>$userinfo['id']])){
                     session('userinfo',$userinfo);
-                    $this->redirect('Index/index');
+                    $this->success('登录成功','Index/index');
                 }
             }
             $this->error('用户名或密码错误',url('Login/index'));

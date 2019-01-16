@@ -27,10 +27,10 @@ class Tourism extends Common
             //接收cate_id
             $cate_id = $request->param('cate_id');
             if($cate_id == 'all'){
-                $tourData = Db::table('tourism')->select();
+                $tourData = Db::table('tourism')->paginate(10);
                 $count = Db::table('tourism')->count();
             }else{
-                $tourData = Db::table('tourism')->where(['cate_id'=>$cate_id])->select();
+                $tourData = Db::table('tourism')->where(['cate_id'=>$cate_id])->paginate(10);
                 $count = Db::table('tourism')->where(['cate_id'=>$cate_id])->count();
             }
             $this->assign('tourList',$tourData);
@@ -38,7 +38,7 @@ class Tourism extends Common
             $this->assign('cate_id',$cate_id);
         }else{
             //获取旅游资料
-            $tourData = Db::table('tourism')->select();
+            $tourData = Db::table('tourism')->paginate(10);
             $count = Db::table('tourism')->count();
             $this->assign('tourList',$tourData);
             $this->assign('count',$count);

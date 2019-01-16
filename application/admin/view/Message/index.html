@@ -2,7 +2,7 @@
 {include file="../../../public/public/admin/meta"}
     <!--/meta 作为公共模版分离出去-->
 
-    <title>报名列表</title>
+    <title>留言板</title>
 
 <!--_header 作为公共模版分离出去-->
 {include file="../../../public/public/admin/header"}
@@ -15,26 +15,14 @@
 <section class="Hui-article-box">
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
         <span class="c-gray en">&gt;</span>
-        报名审查
+        留言板
         <span class="c-gray en">&gt;</span>
-        报名列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a> </nav>
+        留言板 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a> </nav>
     <div class="Hui-article">
         <article class="cl pd-20">
             <div class="cl pd-5 bg-1 bk-gray">
                 <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </span>
                 <span class="r">共有数据：<strong>{$count}</strong> 条</span>
-            </div>
-            <div class="text-c mt-5" style="text-align: left">
-                <form action="index" method="post">
-				<span class="select-box inline">
-				<select name="cate" class="select">
-                    <option value="3" {if $status eq 3}selected{/if}>全部</option>
-                    <option value="0" {if $status eq 0}selected{/if}>未联系</option>
-                    <option value="1" {if $status eq 1}selected{/if}>已联系</option>
-				</select>
-				</span>
-                    <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 检索</button>
-                </form>
             </div>
             <table class="table table-border table-bordered table-bg mt-5">
                 <thead>
@@ -46,35 +34,21 @@
                     <th width="40">ID</th>
                     <th width="150">姓名</th>
                     <th width="130">电话</th>
-                    <th>住址</th>
+                    <th>留言内容</th>
                     <th width="120">提交时间</th>
-                    <th width="120">报名项目</th>
-                    <th width="120">状态</th>
                     <th width="100">操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {foreach $entryArr as $val}
+                {foreach $message as $val}
                     <tr class="text-c">
                         <td><input type="checkbox" value="{$val['id']}" name="" class="check"></td>
                         <td>{$val['id']}</td>
                         <td>{$val['name']}</td>
                         <td>{$val['phone']}</td>
-                        <td>{$val['address']}</td>
+                        <td>{$val['content']}</td>
                         <td>{$val['create_at']}</td>
-                        <td>{$val['cate']['cate_name']}</td>
-                        {if $val['status'] == 1}
-                        <td class="td-status"><span class="label label-success radius">已联系</span></td>
-                        {elseif $val['status'] == 0}
-                        <td class="td-status"><span class="label label-defaunt radius">未联系</span></td>
-                        {/if}
                         <td class="td-manage">
-                            {if $val['status'] eq 1}
-                            <a style="text-decoration:none"  href="javascript:;" title="已联系"><i class="Hui-iconfont">&#xe631;</i></a>
-                            {else if $val['status'] eq 0}
-                            <a onClick="admin_start(this,'{$val[\'id\']}')" href="javascript:;" title="已联系" style="text-decoration:none"><i class="Hui-iconfont">&#xe615;</i></a>
-                            {/if}
-                            <a title="编辑" href="javascript:;" onclick="admin_edit('编辑','{$val[\'id\']}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                             <a title="删除" href="javascript:;" onclick="admin_del(this,'{$val[\'id\']}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
                         </td>
                     </tr>
@@ -82,7 +56,7 @@
                 </tbody>
             </table>
             <div class="page">
-                {$entrylist|raw}
+                {$message|raw}
             </div>
         </article>
     </div>

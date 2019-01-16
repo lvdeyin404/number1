@@ -22,11 +22,11 @@ class Picture extends Common
             $id = $request->param('id');
             if($id == 'all'){
                 //取出轮播数据
-                $picdata = Db::table('picture')->select();
+                $picdata = Db::table('picture')->paginate(10);
                 $count = Db::table('picture')->count();
             }else{
                 //通过id获取轮播数据
-                $picdata = Db::table('picture')->where(['cate_id'=>$id])->select();
+                $picdata = Db::table('picture')->where(['cate_id'=>$id])->paginate(10);
                 $count = Db::table('picture')->where(['cate_id'=>$id])->count();
             }
             $this->assign('count',$count);
@@ -34,7 +34,7 @@ class Picture extends Common
             $this->assign('pic',$picdata);
         }else{
             //取出轮播数据
-            $picdata = Db::table('picture')->select();
+            $picdata = Db::table('picture')->paginate(10);
             $count = Db::table('picture')->count();
             $this->assign('count',$count);
             $this->assign('cate_id',0);
