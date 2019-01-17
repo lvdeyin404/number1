@@ -1,0 +1,285 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-公司简介</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner -->
+<img src="/uploads/lunbo/{$proImg['pic_path']}" alt="图片" style="width: 100%;">
+
+<!-- 成就-简介 -->
+<div class="container">
+    <!-- 成就 -->
+    <div class="row cj">
+        <div class="col-tl-12 text-align-c bg-baise cj01">
+            <div class="col-tl-3 col-mb-2">
+                <div class="ybqjfontsize36px SourceHanSansCN-Bold font-heise">2018<sup class="font-huise">年</sup></div>
+                <div class="ybqjfontsize24px-ts font-huise">成立</div>
+            </div>
+            <div class="col-tl-3 col-mb-3">
+                <div class="ybqjfontsize36px SourceHanSansCN-Bold font-heise">58<sup class="font-huise">+</sup></div>
+                <div class="ybqjfontsize24px-ts font-huise">产业覆盖范围</div>
+            </div>
+            <div class="col-tl-3 col-mb-4">
+                <div class="ybqjfontsize36px SourceHanSansCN-Bold font-heise">36<sup class="font-huise">+</sup></div>
+                <div class="ybqjfontsize24px-ts font-huise">覆盖全国多个省市</div>
+            </div>
+            <div class="col-tl-3 col-mb-3">
+                <div class="ybqjfontsize36px SourceHanSansCN-Bold font-heise">470<sup class="font-huise">+</sup></div>
+                <div class="ybqjfontsize24px-ts font-huise">项目研究成果</div>
+            </div>
+        </div>
+    </div>
+    <!-- 简介 -->
+    <div class="row jj">
+        <div class="col-tl-2 col-mb-2 padding-r-0 SourceHanSansCN-Bold ybqjfontsize28px font-lanse">简介</div>
+        <div class="col-tl-10 col-mb-10 SourceHanSansCN-Light ybqjfontsize18px text-align-j">
+            <!--<p>贵州意八启久文化发展有限公司于2018年7月9日成立，注册资本为300万元，公司经营项目多元化、国际化，主要涉及旅游产业、教育产业、文化产业、策划与咨询、国际贸易等。公司CEO及部分股东系毕业于意大利公立名校，并常年旅居意大利，对意大利的人文风情有深刻的理解。</p>-->
+            <!--<p class="jj0202">公司自成立以来奉行的宗旨就是：开创前端合作新时代，推文化世界之巅峰。</p>-->
+            <?php echo $profileList[0]['content'] ?>
+        </div>
+    </div>
+</div>
+
+<!-- 全球快捷服务 -->
+<img class="qqkjfwimg" src="/uploads/link/img/img02/img0202.png" alt="img0104.jpg" style="width: 100%;">
+
+<!-- 文化等 -->
+<div class="container">
+    <!-- 文化 -->
+    <div class="row jj">
+        <div class="col-tl-2 col-mb-2 padding-r-0 SourceHanSansCN-Bold ybqjfontsize28px font-lanse">文化</div>
+        <div class="col-tl-10 col-mb-10 SourceHanSansCN-Light ybqjfontsize18px text-align-j">
+            <?php echo $profileList[1]['content'] ?>
+            <!--<p>-->
+                <!--在文化交流方面我司接待操作了意大利宝拉国际语言文化协会会长Nicola Paulon博士，携威尼斯音乐学院声乐系主任世-->
+                <!--界著名男中音歌唱家 Giancarlo Pasquetto、维琴察音乐学院教授意大利著名钢琴教育家 Lucca Marra、圣雷莫美术学-->
+                <!--院教授 VolanteFrederi，在贵阳市联合贵州民族大学美术学院、贵州师范大学音乐学院举办两场专业学术交流与指导，-->
+                <!--并前往瓮安一中与校长深度沟通，加强意大利各大学与瓮安一中的各类活动达成合作意向。同时我司在意大利与维琴察足-->
+                <!--球俱乐部（Vicenza Calcio 1902）、罗伯特巴乔国际足球学院等洽谈合作项目，为贵州的足球小将提供参与国际先进足球活动的平台。-->
+            <!--</p>-->
+            <!--<p class="jj0202">-->
+                <!--与此同时还携手贵州大数据旅游产业股份有限公司共赴重庆大利领事馆、北京意大利大使馆以及意大利维琴察市政府等-->
+                <!--单位协商在贵阳成立意大利签证申请服务中心的相关事宜，以便为贵州与意大利在旅游方面、教育方面、酿酒业方面、-->
+                <!--体育方面、大健康方面、大数据方面等双方优势领域提供便利的通达渠道与交流平台。-->
+            <!--</p>-->
+        </div>
+    </div>
+    <!-- 员工风貌 -->
+    <div class="row jj">
+        <div class="col-tl-12 SourceHanSansCN-Bold ybqjfontsize28px font-lanse">员工风貌</div>
+        <div class="col-tl-12 ygfm02">
+            <div class="col-tl-4 col-mb-4 ygfm02zj">
+                <img src="/uploads/lunbo/{$staff[0]['pic_path']}">
+            </div>
+            <div class="col-tl-4 col-mb-4 ygfm02zj">
+                <img src="/uploads/lunbo/{$staff[1]['pic_path']}">
+            </div>
+            <div class="col-tl-4 col-mb-4 ygfm02zj">
+                <img src="/uploads/lunbo/{$staff[2]['pic_path']}">
+            </div>
+        </div>
+    </div>
+
+    <!-- 留言板-地址-->
+    <div class="row jj">
+        <!-- 留言板 -->
+        <div class="col-tl-6 col-mb-7 lybffj">
+            <div class="col-tl-12 padding-0 SourceHanSansCN-Bold ybqjfontsize28px font-lanse">留言板</div>
+            <div class="col-tl-12 text-align-c bg-chengse02 lybfj">
+                <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse hidden-mb lybtext">留言板</div>
+                <form action="gsdsj.html" method="get" id="formlyb"></form>
+                <table class="tablelyb">
+                    <tr class="trlyb">
+                        <th class="ybqjfontsize20px font-heise thlyb01">姓&emsp;&emsp;名</th>
+                        <th class="thlyb02"><input type="text" form="formlyb" name="lyb_name" id="" placeholder="姓名"></th>
+                    </tr>
+                    <tr class="trlybbr"></tr>
+                    <tr class="trlyb">
+                        <th class="ybqjfontsize20px font-heise thlyb01">联系方式</th>
+                        <th class="thlyb02"><input type="text" form="formlyb" name="lyb_lxfs" id="" placeholder="手机号"></th>
+                    </tr>
+                    <tr class="trlybbr"></tr>
+                    <tr class="trlyb">
+                        <th class="ybqjfontsize20px font-heise thlyb01">您的留言</th>
+                        <th class="thlyb02"><textarea form="formlyb" name="lyb_ndly" id=""></textarea></th>
+                    </tr>
+                </table>
+                <button type="submit" form="formlyb" class="cursor-pointer bg-lanse font-baise lybsubmit">提交</button>
+            </div>
+        </div>
+        <!-- 地址 -->
+        <div class="col-tl-6 col-mb-5">
+            <div class="col-tl-12 padding-0 SourceHanSansCN-Bold ybqjfontsize28px font-lanse">地址</div>
+            <div class="col-tl-12 text-align-c bg-chengse02 lybfj">
+                <!--引用百度地图API-->
+                <style type="text/css">
+                    html,
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .iw_poi_title {
+                        color: #CC5522;
+                        font-size: 14px;
+                        font-weight: bold;
+                        overflow: hidden;
+                        padding-right: 13px;
+                        white-space: nowrap
+                    }
+
+                    .iw_poi_content {
+                        font: 12px arial, sans-serif;
+                        overflow: visible;
+                        padding-top: 4px;
+                        white-space: -moz-pre-wrap;
+                        word-wrap: break-word
+                    }
+                </style>
+                <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+
+                <!-- 2.在<body></body>间需要显示地图的位置放入以下代码：（该代码调用地图） -->
+                <!--百度地图容器-->
+                <div style="width:100%;height:200px;border:#ccc solid 1px;" id="dituContent"></div>
+                <!-- 3.以下代码放在页面最底端（其实可放在页面任意位置。） -->
+                <script type="text/javascript">
+                    //创建和初始化地图函数：
+                    function initMap() {
+                        createMap(); //创建地图
+                        setMapEvent(); //设置地图事件
+                        addMapControl(); //向地图添加控件
+                        addMarker(); //向地图中添加marker
+                    }
+                    //创建地图函数：
+                    function createMap() {
+                        var map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+                        var point = new BMap.Point(115.949652, 28.693851); //定义一个中心点坐标
+                        map.centerAndZoom(point, 18); //设定地图的中心点和坐标并将地图显示在地图容器中
+                        window.map = map; //将map变量存储在全局
+                    }
+                    //地图事件设置函数：
+                    function setMapEvent() {
+                        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+                        map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+                        map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+                        map.enableKeyboard(); //启用键盘上下左右键移动地图
+                    }
+                    //地图控件添加函数：
+                    function addMapControl() {
+                        //向地图中添加缩放控件
+                        var ctrl_nav = new BMap.NavigationControl({
+                            anchor: BMAP_ANCHOR_TOP_LEFT,
+                            type: BMAP_NAVIGATION_CONTROL_LARGE
+                        });
+                        map.addControl(ctrl_nav);
+                        //向地图中添加缩略图控件
+                        var ctrl_ove = new BMap.OverviewMapControl({
+                            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                            isOpen: 1
+                        });
+                        map.addControl(ctrl_ove);
+                        //向地图中添加比例尺控件
+                        var ctrl_sca = new BMap.ScaleControl({
+                            anchor: BMAP_ANCHOR_BOTTOM_LEFT
+                        });
+                        map.addControl(ctrl_sca);
+                    }
+                    //标注点数组
+                    var markerArr = [{
+                        title: "意八启久文化发展有限公司",
+                        content: "电话：0851-88576490",
+                        point: "115.950312|28.693447",
+                        isOpen: 1,
+                        icon: {
+                            w: 23,
+                            h: 25,
+                            l: 46,
+                            t: 21,
+                            x: 9,
+                            lb: 12
+                        }
+                    }];
+                    //创建marker
+                    function addMarker() {
+                        for (var i = 0; i < markerArr.length; i++) {
+                            var json = markerArr[i];
+                            var p0 = json.point.split("|")[0];
+                            var p1 = json.point.split("|")[1];
+                            var point = new BMap.Point(p0, p1);
+                            var iconImg = createIcon(json.icon);
+                            var marker = new BMap.Marker(point, {
+                                icon: iconImg
+                            });
+                            var iw = createInfoWindow(i);
+                            var label = new BMap.Label(json.title, {
+                                "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20)
+                            });
+                            marker.setLabel(label);
+                            map.addOverlay(marker);
+                            label.setStyle({
+                                borderColor: "#808080",
+                                color: "#333",
+                                cursor: "pointer"
+                            });
+                            (function () {
+                                var index = i;
+                                var _iw = createInfoWindow(i);
+                                var _marker = marker;
+                                _marker.addEventListener("click", function () {
+                                    this.openInfoWindow(_iw);
+                                });
+                                _iw.addEventListener("open", function () {
+                                    _marker.getLabel().hide();
+                                })
+                                _iw.addEventListener("close", function () {
+                                    _marker.getLabel().show();
+                                })
+                                label.addEventListener("click", function () {
+                                    _marker.openInfoWindow(_iw);
+                                })
+                                if (!!json.isOpen) {
+                                    label.hide();
+                                    _marker.openInfoWindow(_iw);
+                                }
+                            })()
+                        }
+                    }
+                    //创建InfoWindow
+                    function createInfoWindow(i) {
+                        var json = markerArr[i];
+                        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title +
+                            "</b><div class='iw_poi_content'>" + json.content + "</div>");
+                        return iw;
+                    }
+                    //创建一个Icon
+                    function createIcon(json) {
+                        var icon = new BMap.Icon("http://map.baidu.com/image/us_cursor.gif", new BMap.Size(json.w,
+                            json
+                                .h), {
+                            imageOffset: new BMap.Size(-json.l, -json.t),
+                            infoWindowOffset: new BMap.Size(json.lb + 5, 1),
+                            offset: new BMap.Size(json.x, json.h)
+                        })
+                        return icon;
+                    }
+                    initMap(); //创建和初始化地图
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="../../../public/public/index/footer"}
+
+<!-- JS -->
+<script>
+    // 去掉click的300ms延迟响应
+    window.addEventListener("load", function () {
+        FastClick.attach(document.body);
+    }, false)
+</script>
+<script src="/static/Index/js/ybqj.js"></script>
+</body>
+
+</html>

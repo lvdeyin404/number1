@@ -33,9 +33,6 @@ class Index extends Common
         $this->assign('news',$news);
         $this->assign('about',$about);
         $this->assign('links',$links);
-        $this->assign('footer',$this->footer);
-        $this->assign('systemctl',$this->systemctl);
-        $this->assign('logo',$this->logo);
         return $this->fetch();
     }
 }
