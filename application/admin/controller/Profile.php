@@ -43,7 +43,7 @@ class Profile extends Common
             $content = $data['content'];
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p>");
+            $content = strip_tags($content,"<p><span>");
             //添加到数据库
             $update['title'] = $title;
             $update['content'] = $content;

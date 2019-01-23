@@ -92,7 +92,7 @@ class Article extends Common
             $title = html_entity_decode($title);
             $title = strip_tags($title);
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p>");
+            $content = strip_tags($content,"<p><span>");
             //判断参数是否为为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -167,7 +167,7 @@ class Article extends Common
             $add['author'] = $author;
             $add['cate_id'] = $cate_id;
             $add['is_Release'] = $is_Release;
-            $add['add_time'] = date('Y-m-d H:i:s');
+            $add['add_time'] = date('Y-m-d');
             $res = Db::table('news')->insert($add);
             if($res){
                 return Util::show(1,'添加成功');

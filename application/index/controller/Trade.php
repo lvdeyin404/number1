@@ -14,10 +14,10 @@ class Trade extends Common
     public function index()
     {
         //获取轮播 cate_id=7  is_status=1  table--picture
-        $picPath = Db::table('picpath')->where(['cate_id'=>7,'is_status'=>1])->select();
+        $picPath = Db::table('picture')->where(['cate_id'=>7,'is_status'=>1])->find();
 
         //获取关于 table--trade
-        $trade = Db::table('trade')->select();
+        $trade = Db::table('trade')->find();
 
         //合作单位 cate_id=13 is_status=1  table--picture
         $coop = Db::table('picture')->where(['cate_id'=>13,'is_status'=>1])->select();

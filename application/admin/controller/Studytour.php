@@ -89,7 +89,7 @@ class Studytour extends Common
             $content = $data['content'];
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p>");
+            $content = strip_tags($content,"<p><span>");
             //判断参数是否为为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -124,7 +124,7 @@ class Studytour extends Common
             }
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p>");
+            $content = strip_tags($content,"<p><span>");
             //修改数据库
             $add['title'] = $title;
             $add['content'] = $content;

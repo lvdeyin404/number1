@@ -19,8 +19,8 @@ Route::get('Article', 'index/Article/index');
 Route::get('Entry', 'index/Entry/index');
 Route::get('Overstudy', 'index/Overstudy/index');
 Route::get('Trade', 'index/Trade/index');
-Route::get('Regist/sign', 'index/Regist/sign');
-Route::get('Regist/message', 'index/Regist/message');
+Route::post('Regist/message', 'index/Regist/message');
+Route::post('Regist/sign', 'index/Regist/sign');
 Route::get('Studytour', 'index/Studytour/index');
 Route::get('Tourism', 'index/Tourism/index');
 return [

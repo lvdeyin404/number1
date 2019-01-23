@@ -5,7 +5,7 @@
 {include file="../../../public/public/index/header"}
 
 <!-- Banner -->
-<img src="/uploads/lunbo/{$proImg['pic_path']}" alt="图片" style="width: 100%;">
+<img src="/uploads/lunbo/{$proImg['pic_path']}" alt="{$proImg['pic_tags']}" style="width: 100%;">
 
 <!-- 成就-简介 -->
 <div class="container">
@@ -92,20 +92,20 @@
                 <table class="tablelyb">
                     <tr class="trlyb">
                         <th class="ybqjfontsize20px font-heise thlyb01">姓&emsp;&emsp;名</th>
-                        <th class="thlyb02"><input type="text" form="formlyb" name="lyb_name" id="" placeholder="姓名"></th>
+                        <th class="thlyb02"><input type="text" form="formlyb" name="name" id="name" placeholder="姓名"></th>
                     </tr>
                     <tr class="trlybbr"></tr>
                     <tr class="trlyb">
                         <th class="ybqjfontsize20px font-heise thlyb01">联系方式</th>
-                        <th class="thlyb02"><input type="text" form="formlyb" name="lyb_lxfs" id="" placeholder="手机号"></th>
+                        <th class="thlyb02"><input type="text" form="formlyb" name="phone" id="phone" placeholder="手机号"></th>
                     </tr>
                     <tr class="trlybbr"></tr>
                     <tr class="trlyb">
                         <th class="ybqjfontsize20px font-heise thlyb01">您的留言</th>
-                        <th class="thlyb02"><textarea form="formlyb" name="lyb_ndly" id=""></textarea></th>
+                        <th class="thlyb02"><textarea form="formlyb" name="content" id="message"></textarea></th>
                     </tr>
                 </table>
-                <button type="submit" form="formlyb" class="cursor-pointer bg-lanse font-baise lybsubmit">提交</button>
+                <button type="button" form="formlyb" class="cursor-pointer bg-lanse font-baise lybsubmit" onclick="subMessage()">提交</button>
             </div>
         </div>
         <!-- 地址 -->
@@ -271,15 +271,6 @@
 </div>
 
 {include file="../../../public/public/index/footer"}
-
-<!-- JS -->
-<script>
-    // 去掉click的300ms延迟响应
-    window.addEventListener("load", function () {
-        FastClick.attach(document.body);
-    }, false)
-</script>
-<script src="/static/Index/js/ybqj.js"></script>
 </body>
 
 </html>

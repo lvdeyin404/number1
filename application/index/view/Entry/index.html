@@ -1,0 +1,56 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-报名方式</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner -->
+<img class="index-banner" src="/uploads/lunbo/{$pic['pic_path']}" alt="{$pic['pic_tags']}" style="width: 100%;">
+
+<!-- 报名 -->
+<div class="text-align-c register01">
+    <div class="bg-baise register01zj">
+        <p class="ybqjfontsize36px font-heise register0101">意大利那么大，你不想去看看？？？</p>
+        <p class="ybqjfontsize20px font-heise"> 2019意大利旅游、留学火热报名中！！！</p>
+        <p class="register0103">
+            <span class="ybqjfontsize24px-ts font-lanse register010301">基本信息</span>
+            <span class="ybqjfontsize14px font-lanse">BASIC INFORMATION</span>
+        </p>
+    </div>
+</div>
+<form action="registration_method.html" id="formdata" class="text-align-c register02">
+    <label for="bmxm">姓&emsp;&emsp;名</label>
+    <input type="text" name="name" id="bmxm">
+    <br>
+    <br>
+    <label for="bmdh">电&emsp;&emsp;话</label>
+    <input type="tel" name="phone" id="bmdh">
+    <br>
+    <br>
+    <label for="bmdz">地&emsp;&emsp;址</label>
+    <input type="text" name="address" id="bmdz">
+    <br>
+    <br>
+    <label for="bmss">报名事项</label>
+    <select name="cate" id="bmss" class="ybqjfontsize14px font-heise cursor-pointer">
+        <option class="ybqjfontsize14px font-heise bg-baise" value="意大利留学">意大利留学</option>
+        <option class="ybqjfontsize14px font-heise bg-baise" value="意大利游学">意大利游学</option>
+        <option class="ybqjfontsize14px font-heise bg-baise" value="意大利旅游">意大利旅游</option>
+    </select>
+    <br>
+    <br>
+    <button type="button" class="font-baise cursor-pointer ybqjfontsize14px" onclick="subSign()">提交</button>
+    <br>
+    <br>
+    <br>
+</form>
+<script>
+    $(".register02 select").width($(".register02 input").width()).height($(".register02 input").height());
+    $(".register01").height($(".register01zj").height());
+</script>
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

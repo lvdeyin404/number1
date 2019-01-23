@@ -20,7 +20,6 @@ class Entry extends Common
         $this->assign('footer',$this->footer);
         $this->assign('systemctl',$this->systemctl);
         $this->assign('logo',$this->logo);
-        dump($pic);
-//        return $this->fetch();
+        return $this->fetch();
     }
 }

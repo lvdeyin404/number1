@@ -14,7 +14,7 @@ class Studytour extends Common
     public function index()
     {
         //获取游学页轮播  cate_id=5  is_status=1   table--picture
-        $picPath = Db::table('picpath')->where(['cate_id'=>5,'is_status'=>1])->select();
+        $picPath = Db::table('picture')->where(['cate_id'=>5,'is_status'=>1])->select();
 
         //行程特色 cate_id=1  is_status=1   table--studytour
         $tripChar = Db::table('studytour')->where(['cate_id'=>1,'is_status'=>1])->select();

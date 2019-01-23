@@ -1,0 +1,82 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-首页</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner轮播图 -->
+<img class="index-banner" src="/uploads/lunbo/{$picpath['pic_path']}" alt="{$picpath['pic_tags']}" style="width: 100%;">
+
+<!-- 新闻 -->
+<div class="container">
+    <div class="row gsdsjnew">
+        <div class="col-tl-2 font-weight-bold text-align-c gsdsjnew0101">
+            <div class="col-tl-12 col-mb-4 font-lanse gsdsjnew-active">公司新闻</div>
+            <div class="col-tl-12 col-mb-4">行业新闻</div>
+            <div class="col-tl-12 col-mb-4">热门新闻</div>
+        </div>
+        <div class="col-tl-10">
+            {foreach $newsGs as $vo}
+                <div class="row gsdsjnew010201type gsdsjnew010201">
+                    <div class="col-tl-5 hidden-mb">
+                        <img src="/uploads/{$vo['pic_path']}" alt="" style="width:100%">
+                    </div>
+                    <div class="col-tl-7 gsdsjnew01020102">
+                        <p class="font-weight-bold ybqjfontsize20px">{$vo['new_title']}</p>
+                        <p><?php echo $vo['new_content'] ?></p>
+                        <P class="text-align-r"><?php echo substr($vo['add_time'],0,10); ?></P>
+                    </div>
+                </div>
+            {/foreach}
+            <!--<div class="row gsdsjnew010201type">-->
+                <!--<div class="col-tl-5 hidden-mb">-->
+                    <!--<img src="../img/img03/img0303.png" alt="" style="width:100%">-->
+                <!--</div>-->
+                <!--<div class="col-tl-7 gsdsjnew01020102">-->
+                    <!--<p class="font-weight-bold ybqjfontsize20px">意大利故事&#45;&#45;佩鲁贾</p>-->
+                    <!--<P>第一次对意大利有一个粗浅的认识是在初中的地理课上，它在我的脑海里是一个靴子形状的图。一脚踏入...</P>-->
+                    <!--<P class="text-align-r">2018-12-29</P>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row gsdsjnew010201type">-->
+                <!--<div class="col-tl-5 hidden-mb">-->
+                    <!--<img src="../img/img03/img0304.png" alt="" style="width:100%">-->
+                <!--</div>-->
+                <!--<div class="col-tl-7 gsdsjnew01020102">-->
+                    <!--<p class="font-weight-bold ybqjfontsize20px">PAULON博士参观大数据</p>-->
+                    <!--<P>9月26日，1879陪同意大利维琴察市长代表Nicola Paulon博士参观贵阳市花溪区旅游及大数据相关产业，并与...</P>-->
+                    <!--<P class="text-align-r">2018-12-28</P>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row gsdsjnew010201type">-->
+                <!--<div class="col-tl-5 hidden-mb">-->
+                    <!--<img src="../img/img03/img0305.png" alt="" style="width:100%">-->
+                <!--</div>-->
+                <!--<div class="col-tl-7 gsdsjnew01020102">-->
+                    <!--<p class="font-weight-bold ybqjfontsize20px">贵阳市与维琴查市友好峰会</p>-->
+                    <!--<P>9月16日，1879陪同意大利维琴察市长代表Nicola Paulon博士与贵阳市友好协会、贵阳市文广局及贵阳市教育...</P>-->
+                    <!--<P class="text-align-r">2018-12-27</P>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row gsdsjnew010201type">-->
+                <!--<div class="col-tl-5 hidden-mb">-->
+                    <!--<img src="../img/img03/img0306.png" alt="" style="width:100%">-->
+                <!--</div>-->
+                <!--<div class="col-tl-7 gsdsjnew01020102">-->
+                    <!--<p class="font-weight-bold ybqjfontsize20px">宝拉语言谯攀：贵州学生意大利留学指南</p>-->
+                    <!--<P>提起意大利，首先我们想到的可能是足球、古罗马斗兽场、水城威尼斯……作为旅游胜地，意大利无疑是很...</P>-->
+                    <!--<P class="text-align-r">2018-12-26</P>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="text-align-c gsdsjnew02">
+        <span class="cursor-pointer ybqjfontsize20px">上一页</span>&emsp;&emsp;<span class="cursor-pointer ybqjfontsize20px">下一页</span>
+    </div>
+</div>
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

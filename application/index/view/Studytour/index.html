@@ -1,0 +1,106 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-首页</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner轮播图 -->
+<div class="swiper-container index-banner">
+    <div class="swiper-wrapper">
+        {foreach $picpath as $vo}
+            <div class="swiper-slide">
+                <img src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width: 100%;">
+            </div>
+        {/foreach}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next index-banner-next"></div>
+    <div class="swiper-button-prev index-banner-prev"></div>
+</div>
+
+<!-- 游学 -->
+<div class="container">
+    <!-- 游学夏令营冬令营  全新经典路线推荐 -->
+    <div class="text-align-c ybqjfontsize36px font-lanse SourceHanSansCN-Bold xlydxjdlx">游学夏令营冬令营 全新经典路线推荐</div>
+    <img class="xlydxjdlximg" src="/static/Index/img/img05/img0503.png" alt="" style="width:100%;">
+    <!-- 冬令营行程参考 -->
+    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold xctstype">行程特色</div>
+    <div class="row">
+        <div class="col-tl-7 text-align-j font-heise xctszw">
+            <!--1.第1天，到达威尼斯机场,乘车30分钟到维琴察宾馆，用餐之后， 住酒店休息，调节时差。-->
+            <img class="visible-mb float-r" src="/static/Index/img/img05/img0504.png" alt="" style="width:46%;">
+            {foreach $tripchar as $vo}
+                <?php echo $vo['content']; ?>
+                <br>
+            {/foreach}
+        </div>
+        <div class="col-tl-5 hidden-mb">
+            <img src="/static/Index/img/img05/img0504.png" alt="" style="width:100%;">
+        </div>
+    </div>
+    <!-- 游学意义 -->
+    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold xctstype">游学意义</div>
+    <div class="yxyy02 text-align-j">
+        <div class="row yxyy0201type">
+            <div class="col-tl-4 col-mb-5">
+                <img src="/static/Index/img/img05/img0506.png" alt="" style="width:100%;">
+            </div>
+            <div class="col-tl-8 col-mb-7 yxyy020102">
+                <h1>
+                    {$tour[0]['title']}
+                </h1>
+                <p>
+                    <?php echo $tour[0]['content']; ?>
+                </p>
+            </div>
+        </div>
+        <div class="row yxyy0201type">
+            <div class="col-tl-8 col-mb-7 yxyy020102">
+                <h1>
+                    {$tour[1]['title']}
+                </h1>
+                <p>
+                    <?php echo $tour[1]['content']; ?>
+                </p>
+            </div>
+            <div class="col-tl-4 col-mb-5">
+                <img src="/static/Index/img/img05/img0507.png" alt="" style="width:100%;">
+            </div>
+        </div>
+        <div class="row yxyy0201type">
+            <div class="col-tl-4 col-mb-5">
+                <img src="/static/Index/img/img05/img0508.png" alt="" style="width:100%;">
+            </div>
+            <div class="col-tl-8 col-mb-7 yxyy020102">
+                <h1>
+                    {$tour[2]['title']}
+                </h1>
+                <p>
+                    <?php echo $tour[2]['content']; ?>
+                </p>
+            </div>
+        </div>
+        <div class="row yxyy0201type">
+            <div class="col-tl-8 col-mb-7 yxyy020102">
+                <h1>
+                    {$tour[3]['title']}
+                </h1>
+                <p>
+                    <?php echo $tour[3]['content']; ?>
+                </p>
+            </div>
+            <div class="col-tl-4 col-mb-5">
+                <img src="/static/Index/img/img05/img0509.png" alt="" style="width:100%;">
+            </div>
+        </div>
+        <img class="yxyy02img" src="/static/Index/img/img05/img0505.png" alt="">
+    </div>
+</div>
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>
