@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 use Think\Db;
+use Think\Exception;
 use think\Request;
 use app\common\tools\Util;
 
@@ -182,6 +183,17 @@ class Picture extends Common
             }
             if(!in_array($image['type'],$type)){
                 return Util::show(3,'图片类型不支持');
+            }
+            //判断当前是否有图片 如果有先把旧图片删除
+            $picPath = Db::table('picture')->where(['pic_id'=>$id])->field('pic_path')->find();
+            if (!empty($picPath['pic_path'])){
+                //删除文件
+                $filePath = "../public/uploads/lunbo/{$picPath['pic_path']}";
+                try{
+                    unlink($filePath);
+                }catch (Exception $e){
+
+                }
             }
             //移动文件
             $info = $file->move('../public/uploads/lunbo');

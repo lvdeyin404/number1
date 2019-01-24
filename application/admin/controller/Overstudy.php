@@ -10,6 +10,7 @@ namespace app\admin\controller;
 use app\common\tools\Util;
 use App\Utility\Redis;
 use Think\Db;
+use Think\Exception;
 use think\Request;
 
 class Overstudy extends Common
@@ -196,7 +197,7 @@ class Overstudy extends Common
                     return Util::show(3,'图片类型不支持');
                 }
                 //移动文件
-                $info = $file->move('../public/uploads');
+                $info = $file->move('../public/uploads/Overstudy');
                 if($info){
                     //保存数据
                     $imagepath = $info->getSaveName();
@@ -253,7 +254,7 @@ class Overstudy extends Common
                     return Util::show(3,'图片类型不支持');
                 }
                 //移动文件
-                $info = $file->move('../public/uploads');
+                $info = $file->move('../public/uploads/Overstudy');
                 if($info){
                     //保存数据
                     $imagepath = $info->getSaveName();
@@ -530,8 +531,19 @@ class Overstudy extends Common
             if(!in_array($image['type'],$type)){
                 return Util::show(3,'图片类型不支持');
             }
+            //判断当前文章是否有图片 如果有先把旧图片删除
+            $picPath = Db::table('overstudy')->where(['id'=>$id])->field('img')->find();
+            if (!empty($picPath['img'])){
+                //删除文件
+                $filePath = "../public/uploads/Overstudy/{$picPath['img']}";
+                try{
+                    unlink($filePath);
+                }catch (\Exception $e){
+//                    echo $e->getMessage();
+                }
+            }
             //移动文件
-            $info = $file->move('../public/uploads');
+            $info = $file->move('../public/uploads/Overstudy');
             if($info){
                 //将路径存入数据库
                 $imagepath = $info->getSaveName();
@@ -574,8 +586,19 @@ class Overstudy extends Common
             if(!in_array($image['type'],$type)){
                 return Util::show(3,'图片类型不支持');
             }
+            //判断当前文章是否有图片 如果有先把旧图片删除
+            $picPath = Db::table('school')->where(['id'=>$id])->field('img')->find();
+            if (!empty($picPath['img'])){
+                //删除文件
+                $filePath = "../public/uploads/Overstudy/{$picPath['img']}";
+                try{
+                    unlink($filePath);
+                }catch (Exception $e){
+
+                }
+            }
             //移动文件
-            $info = $file->move('../public/uploads');
+            $info = $file->move('../public/uploads/Overstudy');
             if($info){
                 //将路径存入数据库
                 $imagepath = $info->getSaveName();

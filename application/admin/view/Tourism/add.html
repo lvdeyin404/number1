@@ -49,6 +49,15 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">添加图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="uploader-thum-container">
+                    <div id="fileList" class="uploader-list"></div>
+                    <div id="filePicker">选择图片<input type="file" id="image" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <!--<textarea cols="150" rows="10" name="content" id="content"></textarea>-->
@@ -89,6 +98,7 @@
         var aux_tag = $("#aux_tag").val();
         var cate_id = $("#cate_id").val();
         var is_status = $("#release").val();
+        var image = document.getElementById("image").files[0];
         var content = content;
 
         var fordata = new FormData();
@@ -97,6 +107,7 @@
         fordata.append('aux_tag',aux_tag);
         fordata.append('cate_id',cate_id);
         fordata.append('is_status',is_status);
+        fordata.append('image',image);
         fordata.append('content',content);
         //提交服务器
         $.ajax({

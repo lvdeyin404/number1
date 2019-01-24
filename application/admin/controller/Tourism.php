@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 use app\common\tools\Util;
 use think\Db;
+use Think\Exception;
 use think\Request;
 
 class Tourism extends Common
@@ -112,7 +113,7 @@ class Tourism extends Common
                     return Util::show(3,'图片类型不支持');
                 }
                 //移动文件
-                $info = $file->move('../public/uploads');
+                $info = $file->move('../public/uploads/Tourism');
                 if($info){
                     //保存数据
                     $imagepath = $info->getSaveName();
@@ -219,5 +220,63 @@ class Tourism extends Common
         }else{
             $this->error('非法操作','http://www.baidu.com');
         }
+    }
+
+    //图片上传
+    public function uploads(Request $request)
+    {
+        $file = $request->file('image');
+        $id = $request->param('id');
+        $image = $file->getInfo();
+        //获取图片资源
+        if($file){
+            //限制参数
+            $maxsize = 3145728;
+            $type = ['image/jpg','image/jpeg','image/gif','image/png'];
+            if($image['error'] != 0){
+                return Util::show(1,'上传错误,请重试');
+            }
+            //判断图片大小与类型
+            if($image['size'] > $maxsize){
+                return Util::show(2,'图片过大');
+            }
+            if(!in_array($image['type'],$type)){
+                return Util::show(3,'图片类型不支持');
+            }
+            //判断当前是否有图片 如果有先把旧图片删除
+            $picPath = Db::table('tourism')->where(['id'=>$id])->field('img')->find();
+            if (!empty($picPath['img'])){
+                //删除文件
+                $filePath = "../public/uploads/Tourism/{$picPath['img']}";
+                try{
+                    unlink($filePath);
+                }catch (Exception $e){
+
+                }
+            }
+            //移动文件
+            $info = $file->move('../public/Tourism');
+            if($info){
+                //将路径存入数据库
+                $imagepath = $info->getSaveName();
+                $res = Db::table('tourism')->where(['id'=>$id])->update(['img'=>$imagepath]);
+                if($res == 1 || $res == 0){
+                    return Util::show(0,'上传成功',$imagepath);
+                }else{
+                    return Util::show(4,'上传失败');
+                }
+            }
+        }else{
+            $this->error('非法操作','http://www.baidu.com');
+        }
+    }
+
+    //查看图片大图
+    public function picshow(Request $request)
+    {
+        //接收pic_path
+        $pic_path = $request->param('path');
+        $this->assign('pic_path',$pic_path);
+        return $this->fetch();
     }
 }

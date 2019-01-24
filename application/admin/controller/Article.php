@@ -12,6 +12,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\Types\Null_;
 use think\config\driver\Json;
 use Think\Db;
+use Think\Exception;
 use think\Request;
 
 class Article extends Common
@@ -153,7 +154,7 @@ class Article extends Common
                     return Util::show(3,'图片类型不支持');
                 }
                 //移动文件
-                $info = $file->move('../public/uploads');
+                $info = $file->move('../public/uploads/Article');
                 if($info){
                     //保存数据
                     $imagepath = $info->getSaveName();
@@ -228,8 +229,19 @@ class Article extends Common
             if(!in_array($image['type'],$type)){
                 return Util::show(3,'图片类型不支持');
             }
+            //判断当前文章是否有图片 如果有先把旧图片删除
+            $picPath = Db::table('news')->where(['new_id'=>$id])->field('pic_path')->find();
+            if (!empty($picPath['pic_path'])){
+                //删除文件
+                $filePath = "../public/uploads/Article/{$picPath['pic_path']}";
+                try{
+                    unlink($filePath);
+                }catch (Exception $e){
+
+                }
+            }
             //移动文件
-            $info = $file->move('../public/uploads');
+            $info = $file->move('../public/uploads/Article');
             if($info){
                 //将路径存入数据库
                 $imagepath = $info->getSaveName();
