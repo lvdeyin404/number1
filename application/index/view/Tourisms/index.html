@@ -1,0 +1,143 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-旅游</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner轮播图 -->
+<div class="swiper-container index-banner">
+    <div class="swiper-wrapper">
+        {foreach $picpath as $vo}
+            <div class="swiper-slide">
+                <img src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width: 100%;">
+            </div>
+        {/foreach}
+        <!--<div class="swiper-slide">-->
+            <!--<img src="../img/img06/img0603.png" alt="img0104.jpg" style="width: 100%;">-->
+        <!--</div>-->
+        <!--<div class="swiper-slide">-->
+            <!--<img src="../img/img06/img0601.png" alt="img0105.jpg" style="width: 100%;">-->
+        <!--</div>-->
+        <!--<div class="swiper-slide">-->
+            <!--<img src="../img/img06/img0602.png" alt="img0106.jpg" style="width: 100%;">-->
+        <!--</div>-->
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next index-banner-next"></div>
+    <div class="swiper-button-prev index-banner-prev"></div>
+</div>
+
+<!-- 旅游概览 -->
+<div class="text-align-c bg-baise hidden-mb travel01">
+    <div class="ybqjfontsize18px font-heise cursor-pointer font-baise SourceHanSansCN-Bold bg-lanse">美丽西西里专线</div>
+    <div class="ybqjfontsize18px font-heise cursor-pointer">艾尤嘎纳温泉区</div>
+    <div class="ybqjfontsize18px font-heise cursor-pointer">精选主题方案</div>
+    <div class="ybqjfontsize18px font-heise cursor-pointer">出游攻略</div>
+    <div class="ybqjfontsize18px font-heise cursor-pointer">办理流程</div>
+</div>
+<!-- 旅游内容 -->
+<div class="container">
+    <!-- 美丽西西里专线 -->
+    <div class="travel02 travel02bs">
+        <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">美丽西西里专线</span>
+        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row">
+        {foreach $domtour as $vo}
+            <div class="col-tl-4 col-mb-6 overflow-hidden travel0301 travel0301ts01">
+                <img class="travel030101" src="/uploads/Tourism/{$vo['img']}" alt="{$vo['title']}" style="width:100%;">
+                <div class="travel030102">
+                    <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse">{$vo['title']}</span>
+                    <span class="ybqjfontsize14px font-hongse border-radius-5px xptype">{$vo['tag']}</span>
+                </div>
+                <div class="ybqjfontsize14px text-align-j">
+                    <?php echo $vo['content'] ?>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+    <!-- 艾尤嘎纳温泉区 -->
+    <div class="travel02">
+        <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">艾尤嘎纳温泉区</span>
+        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row">
+        {foreach $pertour as $vo}
+        <div class="col-tl-4 col-mb-6 overflow-hidden travel0401 travel0301ts01">
+            <img class="travel030101" src="/uploads/Tourism/{$vo['img']}" alt="{$vo['tag']}" style="width:100%;">
+            <div class="travel030102 text-align-j">
+                <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse">{$vo['title']}</span>
+                <span class="font-weight-bold font-huise">|</span>
+                <span class="ybqjfontsize14px">
+                        <?php echo $vo['content']; ?>
+                    </span>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+    <!-- 精选主题方案 -->
+    <div class="travel02">
+        <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">精选主题方案</span>
+        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row">
+        {foreach $themetour as $vo}
+        <div class="col-tl-6 col-mb-6 jxztfa0201">
+            <img class="cursor-pointer" src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width:100%;">
+        </div>
+        {/foreach}
+    </div>
+    <!-- 出游攻略 -->
+    <div class="travel02">
+        <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">出游攻略</span>
+        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row">
+        <div class="col-tl-7 cxgl0201">
+            <div class="row">
+                <div class="col-tl-4 hidden-mb">
+                    <img src="/uploads/Tourism/{$strategy[0]['img']}" alt="{$strategy[0]['tag']}" style="width:100%;">
+                </div>
+                <div class="col-tl-8">
+                    <h4 class="yywjh4"><?php echo $strategy[0]['title']; ?></h4>
+                    <p class="ybqjfontsize14px text-align-j yywjp">
+                        <?php echo $strategy[0]['content']; ?>
+                    </p>
+                    <h4 class="yywjh4 font-lanse">相关攻略</h4>
+                    {volist name="strategy" id="vo" offset="1" length='3'}
+                    <p class="ybqjfontsize14px text-align-j xgglp">
+                        <i class="fa fa-caret-right"></i>
+                        <?php echo $vo['title']; ?>
+                    </p>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        <div class="col-tl-5">
+            <div class="col-tl-6 col-mb-6 cxgl020201">
+                <img class="cursor-pointer" src="/static/Index/img/img06/img0621.png" alt="" style="width:100%">
+            </div>
+            <div class="col-tl-6 col-mb-6 cxgl020202">
+                <img class="cursor-pointer" src="/static/Index/img/img06/img0622.png" alt="" style="width:100%">
+            </div>
+            <div class="col-tl-6 hidden-mb cxgl020201 cxgl020203">
+                <img class="cursor-pointer" src="/static/Index/img/img06/img0623.png" alt="" style="width:100%">
+            </div>
+            <div class="col-tl-6 hidden-mb cxgl020202 cxgl020203">
+                <img class="cursor-pointer" src="/static/Index/img/img06/img0624.png" alt="" style="width:100%">
+            </div>
+        </div>
+    </div>
+    <!-- 办理流程 -->
+    <div class="travel02 bllc01">
+        <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">办理流程</span>
+    </div>
+    <img class="bllcimg" src="/static/Index/img/img06/img0625.png" alt="" style="width: 100%;">
+</div>
+
+{include file="../../../public/public/index/footer"}
+</body>
+
+</html>

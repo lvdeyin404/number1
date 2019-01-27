@@ -255,7 +255,7 @@ class Tourism extends Common
                 }
             }
             //移动文件
-            $info = $file->move('../public/Tourism');
+            $info = $file->move('../public/uploads/Tourism');
             if($info){
                 //将路径存入数据库
                 $imagepath = $info->getSaveName();

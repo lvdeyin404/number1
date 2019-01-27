@@ -22,7 +22,7 @@ Route::get('Trade', 'index/Trade/index');
 Route::post('Regist/message', 'index/Regist/message');
 Route::post('Regist/sign', 'index/Regist/sign');
 Route::get('Studytour', 'index/Studytour/index');
-Route::get('Tourism', 'index/Tourism/index');
+Route::get('Tourisms', 'index/Tourisms/index');
 return [
 
 ];

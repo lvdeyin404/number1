@@ -1,6 +1,6 @@
 <!--_meta 作为公共模版分离出去-->
 {include file="../../../public/public/index/meta"}
-<title>{$systemctl['web_title']}-经贸</title>
+<title>{$systemctl['web_title']}-旅游</title>
 <!--_header 作为公共模版分离出去-->
 {include file="../../../public/public/index/header"}
 
@@ -15,28 +15,11 @@
             <img src="/uploads/lunbo/{$logo['pic_path']}" alt="" style="width:100%;">
         </div>
         <div class="col-tl-9 col-mb-7 text-align-j gyybqjzw">
-            <!--<p>-->
-                <!--&emsp;&emsp;贵州意八启久文化发展有限公司于2018年7月9日成立，注册资本为300万元，公司经营项目多元化、国际-->
-                <!--化，主要涉及旅游产业、教育产业、文化产业、策划与咨询、国际贸易等。公司CEO及部分股东系毕业于意大-->
-                <!--利公立名校，并常年旅居意大利，对意大利的人文风情有深刻的理解。-->
-            <!--</p>-->
-            <!--<p class="hidden-mb">-->
-                <!--&emsp;&emsp;公司自成立以来奉行的宗旨就是：开创前端合作新时代，推文化世界之巅峰。-->
-            <!--</p>-->
-            <!--<p class="hidden-mb">-->
-                <!--&emsp;&emsp;本公司现处于高速发展阶段，前期合作项目也在稳定发展中，成效也是有目共睹。在前期工作中已与贵州-->
-                <!--大数据旅游产业股份有限公司形成战略合作伙伴，双方就双边互为旅游目的地的旅游线路推广、双边游客的输-->
-                <!--入与输出工作以及双边大数据旅游产业的交流与合作等方面已开展对接工作。同时本公司已将相关的贵州旅游-->
-                <!--宣传片发送至意大利西西里大区政府下属的西西里旅游文化协会，以促进提升贵州作为新型国际旅游目的地的-->
-                <!--国际影响力。此外本公司与意大利贝拉旅游有限公司（Beila Viaggi）达成战略合作协议，已将多条贵州经典与-->
-                <!--原生态的少数民族体验路线推广至意大利，意大利方面也正在进行相关的推广宣传工作的安排。-->
-            <!--</p>-->
-            <?php echo $trade['content'] ?>
+           <?php echo $trade['content'] ?>
         </div>
     </div>
     <!-- 合作单位 -->
     <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse gyybqjtype">合作单位</div>
-    <!--<img src="../img/img07/img0703.png" alt="" style="width:100%;">-->
     <div class="col-tl-12 syyqljzw">
         <div class="row">
             <div class="col-tl-4 col-mb-3 syyqljimg">
@@ -68,116 +51,38 @@
     <!-- 行业资讯 -->
     <div class="SourceHanSansCN-Bold ybqjfontsize28px font-lanse gyybqjtype">行业资讯</div>
     <div class="row hidden-mb jmhyzy02">
-        <!--<div class="col-tl-4">-->
-            <!--<img src="../img/img07/img0704.png" alt="" style="width:100%;">-->
-            <!--<h1 class="text-align-c jmhyzy020102">PAULON博士参观大数据</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px">-->
-                <!--9月26日，1879陪同意大利维琴察市长代表Nicola Paulon博士-->
-                <!--参观贵阳市花溪区旅游及大数据相关产业，并与贵州大数据...-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<div class="col-tl-4">-->
-            <!--<img src="../img/img07/img0705.png" alt="" style="width:100%;">-->
-            <!--<h1 class="text-align-c jmhyzy020102">贵阳市与维琴查市友好峰会</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px">-->
-                <!--9月16日这天，1879陪同意大利维琴察市长代表Nicola Paulon-->
-                <!--博士与贵阳市友好协会、贵阳市文广局及贵阳市教育局相关...-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<div class="col-tl-4">-->
-            <!--<img src="../img/img07/img0706.png" alt="" style="width:100%;">-->
-            <!--<h1 class="text-align-c jmhyzy020102">宝拉语言谯攀：贵州学生意大利留学指南</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px">-->
-                <!--提起意大利，首先我们想到的可能是足球、古罗马斗兽场、水城-->
-                <!--威尼斯……作为旅游胜地，意大利无疑是很多年轻人浪漫的...-->
-            <!--</p>-->
-        <!--</div>-->
         {volist name="news" id="vo" offset="0" length='3'}
-            <div class="col-tl-4">
-                <img src="/uploads/Article/{$vo['pic_path']}" alt="" style="width:100%;">
-                <h1 class="text-align-c jmhyzy020102">{$vo['new_title']}</h1>
-                <p class="text-align-j ybqjfontsize14px">
-                    <!--{$vo['new_content']}-->
-                    <?php echo $vo['new_content'] ?>
-                </p>
-            </div>
+        <div class="col-tl-4">
+            <img src="/uploads/Article/{$vo['pic_path']}" alt="" style="width:100%;">
+            <h1 class="text-align-c jmhyzy020102">{$vo['new_title']}</h1>
+            <p class="text-align-j ybqjfontsize14px">
+                <?php echo $vo['new_content'] ?>
+            </p>
+        </div>
         {/volist}
     </div>
-    {volist name="news" id="vo" offset="3" length="4"}
-        <div class="row jmhyzy03">
-            <div class="col-tl-2 hidden-mb">
-                <p class="text-align-c bg-huise50 jmhyzy030101">
-                    <span class="display-inline-block ybqjfontsize36px">
-                        <?php echo substr($vo['add_time'],8,2); ?>
-                    </span>
-                    <br>
-                    <span class="display-inline-block"><?php echo substr($vo['add_time'],0,7); ?></span>
-                </p>
-            </div>
-            <div class="col-tl-10">
-                <h1 class="jmhyzy030201">{$vo['new_title']}</h1>
-                <p class="text-align-j ybqjfontsize14px font-huise">
-                    <?php echo $vo['new_content'] ?>
-                </p>
-                <p class="text-align-r ybqjfontsize14px font-huise visible-mb">2018-11-25</p>
-            </div>
+
+    {volist name="news" id="vo" offset="3" length='4'}
+    <div class="row jmhyzy03">
+        <div class="col-tl-2 hidden-mb">
+            <p class="text-align-c bg-huise50 jmhyzy030101">
+                <span class="display-inline-block ybqjfontsize36px"><?php echo substr($vo['add_time'],8,2) ?></span>
+                <br>
+                <span class="display-inline-block"><?php echo substr($vo['add_time'],0,10) ?></span>
+            </p>
         </div>
+        <div class="col-tl-10">
+            <h1 class="jmhyzy030201">{$vo['new_title']}</h1>
+            <p class="text-align-j ybqjfontsize14px font-huise">
+                <?php echo $vo['new_content'] ?>
+            </p>
+            <p class="text-align-r ybqjfontsize14px font-huise visible-mb"><?php echo substr($vo['add_time'],0,10) ?></p>
+        </div>
+    </div>
     {/volist}
-    <!--<div class="row jmhyzy03">-->
-        <!--<div class="col-tl-2 hidden-mb">-->
-            <!--<p class="text-align-c bg-huise50 jmhyzy030101">-->
-                <!--<span class="display-inline-block ybqjfontsize36px">08</span>-->
-                <!--<br>-->
-                <!--<span class="display-inline-block">2018.10</span>-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<div class="col-tl-10">-->
-            <!--<h1 class="jmhyzy030201">意大利故事&#45;&#45;佩鲁贾</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px font-huise">-->
-                <!--第一次对意大利有一个粗浅的认识是在初中的地理课上，它在我的脑海里是一个靴子形状的图。一脚踏入地中海里。相信大多数人跟我对意大利的印象是差不多的。-->
-                <!--它在欧洲的南部，是欧洲人口较多的国家，温带地中海气候给它带来温暖的气候。其实意大利有着拥有众多令人艳羡的自然风光和人类文化遗产是一个值得好好...-->
-            <!--</p>-->
-            <!--<p class="text-align-r ybqjfontsize14px font-huise visible-mb">2018-10-08</p>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row jmhyzy03">-->
-        <!--<div class="col-tl-2 hidden-mb">-->
-            <!--<p class="text-align-c bg-huise50 jmhyzy030101">-->
-                <!--<span class="display-inline-block ybqjfontsize36px">26</span>-->
-                <!--<br>-->
-                <!--<span class="display-inline-block">2018.09</span>-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<div class="col-tl-10">-->
-            <!--<h1 class="jmhyzy030201">PAULON博士参观大数据</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px font-huise">-->
-                <!--9月26日，1879陪同意大利维琴察市长代表Nicola Paulon博士参观贵阳市花溪区旅游及大数据相关产业，并与贵州大数据旅游产业股份有限公司进行了深层交流，-->
-                <!--期待明天的相关会谈！1879目前是意大利维琴察市在贵州省唯一官方合作伙伴，望大家持续关注我们...-->
-            <!--</p>-->
-            <!--<p class="text-align-r ybqjfontsize14px font-huise visible-mb">2018-09-26</p>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row jmhyzy03">-->
-        <!--<div class="col-tl-2 hidden-mb">-->
-            <!--<p class="text-align-c bg-huise50 jmhyzy030101">-->
-                <!--<span class="display-inline-block ybqjfontsize36px">16</span>-->
-                <!--<br>-->
-                <!--<span class="display-inline-block">2018.09</span>-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<div class="col-tl-10">-->
-            <!--<h1 class="jmhyzy030201">贵阳市与维琴查市友好峰会</h1>-->
-            <!--<p class="text-align-j ybqjfontsize14px font-huise">-->
-                <!--9月16日这天，1879陪同意大利维琴察市长代表Nicola Paulon 博士与贵阳市友好协会、贵阳市文广局及贵阳市教育局相关领导就贵阳市与维琴察市双边交流项目-->
-                <!--的开展和合作等方面进行了介绍与沟通，迈出了重要的第一步...-->
-            <!--</p>-->
-            <!--<p class="text-align-r ybqjfontsize14px font-huise visible-mb">2018-09-16</p>-->
-        <!--</div>-->
-    <!--</div>-->
 </div>
 
 {include file="../../../public/public/index/footer"}
-
 </body>
 
 </html>

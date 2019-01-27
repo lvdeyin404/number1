@@ -14,28 +14,28 @@ class Overstudy extends Common
     public function index()
     {
         //留学页轮播 cate_id=4 is_status=1  table--picture
-        $picPath = Db::table('picture')->where(['cate_id'=>4,'is_status'=>1])->select();
+        $picPath = Db::table('picture')->where(['cate_id'=>4,'is_status'=>1])->find();
 
         //留学计划 cate_id=1 is_status=1  table--overstudy
-        $plan = Db::table('overstudy')->where(['cate_id'=>1,'is_status'=>1])->select();
+        $plan = Db::table('overstudy')->where(['cate_id'=>1,'is_status'=>1])->limit(3)->select();
 
         //语言学校大图 cate_id=9 is_status=1  table--picture
-        $langPic = Db::table('picture')->where(['cate_id'=>9,'is_status'=>1])->select();
+        $langPic = Db::table('picture')->where(['cate_id'=>9,'is_status'=>1])->find();
 
         //考试等级  cate_id=2 is_status=1  table--overstudy
-        $grade = Db::table('overstudy')->where(['cate_id'=>2,'is_status'=>1])->select();
+        $grade = Db::table('overstudy')->where(['cate_id'=>2,'is_status'=>1])->limit(2)->select();
 
         //校园风采  cate_id=3 is_status=1 table--overstudy
-        $campus = Db::table('overstudy')->where(['cate_id'=>3,'is_status'=>1])->select();
+        $campus = Db::table('overstudy')->where(['cate_id'=>3,'is_status'=>1])->limit(3)->select();
 
         //热点资讯 cate_id=4 is_status=1 table--news
-        $hotNews = Db::table('news')->where(['cate_id'=>4,'is_Release'=>1])->select();
+        $hotNews = Db::table('news')->where(['cate_id'=>4,'is_Release'=>1])->limit(8)->select();
 
         //游学 cate_id=10 is_status=1  table--picture
         $tourPic = Db::table('picture')->where(['cate_id'=>10,'is_status'=>1])->select();
 
         //语言课程 cate_id=11 is_status=1  table--picture
-        $lang = Db::table('picture')->where(['cate_id'=>11,'is_status'=>1])->select();
+        $lang = Db::table('picture')->where(['cate_id'=>11,'is_status'=>1])->limit(6)->select();
 
         //院校推荐分类 树形分类 table--cate_school
         $cateSchoole = Db::table('cate_school')->where(['pid'=>0])->select();
@@ -48,13 +48,13 @@ class Overstudy extends Common
         }
 
         //默认获取第一个分类下的学校信息
-        $schoolList = Db::table('school')->where('pid',$cateSchoole[0]['id'])->select();
+        $schoolList = Db::table('school')->where('pid',$cateSchoole[0]['id'])->limit(8)->select();
 
         //团队顾问 cate_id=4 is_status=1  table--overstudy
-        $team = Db::table('overstudy')->where(['cate_id'=>4,'is_status'=>1])->select();
+        $team = Db::table('overstudy')->where(['cate_id'=>4,'is_status'=>1])->limit(5)->select();
 
         //成功案例 cate_id=5  is_status=1  table--overstudy
-        $succAnli = Db::table('overstudy')->where(['cate_id'=>5,'is_status'=>1])->select();
+        $succAnli = Db::table('overstudy')->where(['cate_id'=>5,'is_status'=>1])->limit(6)->select();
 
         $this->assign('picpath',$picPath);
         $this->assign('plan', $plan);

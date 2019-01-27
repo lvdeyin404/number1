@@ -4,13 +4,14 @@
 <!--_header 作为公共模版分离出去-->
 {include file="../../../public/public/index/header"}
 
+
 <!-- Banner轮播图 -->
 <div class="swiper-container index-banner">
     <div class="swiper-wrapper">
         {foreach $picpath as $vo}
-            <div class="swiper-slide">
-                <img src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width: 100%;">
-            </div>
+        <div class="swiper-slide">
+            <img src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width: 100%;">
+        </div>
         {/foreach}
     </div>
     <!-- Add Pagination -->
@@ -26,18 +27,17 @@
     <div class="text-align-c ybqjfontsize36px font-lanse SourceHanSansCN-Bold xlydxjdlx">游学夏令营冬令营 全新经典路线推荐</div>
     <img class="xlydxjdlximg" src="/static/Index/img/img05/img0503.png" alt="" style="width:100%;">
     <!-- 冬令营行程参考 -->
-    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold xctstype">行程特色</div>
+    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold xctstype">冬令营行程参考</div>
     <div class="row">
-        <div class="col-tl-7 text-align-j font-heise xctszw">
-            <!--1.第1天，到达威尼斯机场,乘车30分钟到维琴察宾馆，用餐之后， 住酒店休息，调节时差。-->
+        <div class="col-tl-8 text-align-j font-heise xctszw">
             <img class="visible-mb float-r" src="/static/Index/img/img05/img0504.png" alt="" style="width:46%;">
             {foreach $tripchar as $vo}
-                <?php echo $vo['content']; ?>
-                <br>
+            <?php echo $vo['content']; ?>
+            <br>
             {/foreach}
         </div>
-        <div class="col-tl-5 hidden-mb">
-            <img src="/static/Index/img/img05/img0504.png" alt="" style="width:100%;">
+        <div class="col-tl-4 hidden-mb">
+            <img class="cursor-pointer" src="/static/Index/img/img05/img0504.png" alt="" style="width:100%;">
         </div>
     </div>
     <!-- 游学意义 -->

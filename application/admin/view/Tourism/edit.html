@@ -20,8 +20,8 @@
             <label class="form-label col-xs-4 col-sm-2">文章分类：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="cate_id" id="cate_id" class="input-text" style="width: 100px">
-                    <option value="1" {if $tourList['cate_id'] eq 1}selected{/if}>国内游</option>
-                    <option value="2" {if $tourList['cate_id'] eq 2}selected{/if}>周边游</option>
+                    <option value="1" {if $tourList['cate_id'] eq 1}selected{/if}>美丽西西里专线</option>
+                    <option value="2" {if $tourList['cate_id'] eq 2}selected{/if}>艾尤嘎纳温泉区</option>
                     <option value="3" {if $tourList['cate_id'] eq 3}selected{/if}>出游攻略</option>
                 </select>
             </div>
@@ -57,7 +57,7 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <div class="uploader-thum-container">
                     <div>
-                        <img src="../../uploads/Tourism/{$tourList['img']}" height="30%" width="20%" id="image"/>
+                        <img src="../../uploads/tourism/{$tourList['img']}" height="30%" width="20%" id="image"/>
                     </div>
                 </div>
             </div>
@@ -160,8 +160,8 @@
             success: function (res) {
                 res = eval("("+res+")");
                 if(res.status == 0){
-                    layer.msg('上传成功!',{icon:1,time:2000})
-                    $("#image").attr('src','../../uploads/Tourism/'+res.data);
+                    layer.msg('上传成功!',{icon:1,time:2000});
+                    $("#image").attr('src','../../uploads/tourism/'+res.data);
                 }else{
                     layer.msg(res.message,{icon:2,time:2000})
                 }

@@ -1,0 +1,257 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-留学</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- Banner轮播图 -->
+<img class="index-banner" src="/uploads/lunbo/{$picpath['pic_path']}" alt="{$picpath['pic_tags']}" style="width: 100%;">
+
+<!-- 留学 -->
+<div class="container">
+    <!-- 留学计划 -->
+    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold lxjhtitle lxjhtitlebs">留学计划</div>
+    <div class="row">
+        {foreach $plan as $vo}
+            <div class="col-tl-4 col-mb-4 lxjh01">
+                <img class="cursor-pointer lxjhimg" src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}" style="width:100%">
+                <div class="bg-lanse font-baise ybqjfontsize14px text-align-j overflow-hidden hidden-mb lxjhzw">
+                    <p class="ybqjfontsize14px font-weight-bold text-align-c font-baise lxjhzwtitle">
+                        {$vo['title']}
+                    </p>
+                    &emsp;&emsp;<?php echo $vo['content'] ?>
+                </div>
+                <div class="text-align-c lxjhljxq">
+                    <span class="bg-lanse font-baise border-radius-5px cursor-pointer">了解详情</span>
+                </div>
+            </div>
+        {/foreach}
+        <!--<div class="col-tl-4 col-mb-4 lxjh01">-->
+            <!--<img class="cursor-pointer lxjhimg" src="/uploads/Overstudy" alt="" style="width:100%">-->
+            <!--<div class="bg-lanse font-baise ybqjfontsize14px text-align-j overflow-hidden hidden-mb lxjhzw">-->
+                <!--<p class="ybqjfontsize14px font-weight-bold text-align-c font-baise lxjhzwtitle">-->
+                    <!--图兰朵计划（意大利语：Programma Turandot）-->
+                <!--</p>-->
+                <!--&emsp;&emsp;是意大利政府于2009年推出的主要针对艺术、音乐和设计专业的中国学生，为其提供在意大利艺术和音乐类院校学习的机会的政府计划。该计划是意大利政府针对中国艺术生去意大利留学的官方计划。-->
+                <!--<br>-->
+                <!--&emsp;&emsp;目的是让中国的艺术类学生能顺利入读意大利大学，可以说是艺术类学生的“马可波罗计划”。通过该计划申请的学生可免除意大利语要求。学生在公立大学学习期间免学费，同时可申请多种奖学金和助学金。-->
+                <!--<br>-->
+                <!--&emsp;&emsp;《图兰朵》是意大利著名作曲家贾科莫·普契尼根据童话剧改编的三幕歌剧。-->
+            <!--</div>-->
+            <!--<div class="text-align-c lxjhljxq">-->
+                <!--<span class="bg-lanse font-baise border-radius-5px cursor-pointer">了解详情</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-tl-4 col-mb-4 lxjh01">-->
+            <!--<img class="cursor-pointer lxjhimg" src="../img/img04/img0403.png" alt="" style="width:100%">-->
+            <!--<div class="bg-lanse font-baise ybqjfontsize14px text-align-j overflow-hidden hidden-mb lxjhzw">-->
+                <!--<p class="ybqjfontsize14px font-weight-bold text-align-c font-baise lxjhzwtitle">-->
+                    <!--马可·波罗计划-->
+                <!--</p>-->
+                <!--&emsp;&emsp;旨在促进中国学生到意大利学习和进修的教育计划。该项目由由意大利大学校长联合会（CRUI）-->
+                <!--发起，旨在从2005年底起，密切意大利与中国之间的学术交流，巩固两国间业已存在的稳定关系。为此将在意-->
+                <!--大利和中国建立两个办事处，用来协调相关的交流活动（涉及大学生，博士生，研究人员，实习生，大学，以及-->
+                <!--外交机构等）。-->
+            <!--</div>-->
+            <!--<div class="text-align-c lxjhljxq">-->
+                <!--<span class="bg-lanse font-baise border-radius-5px cursor-pointer">了解详情</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-tl-4 col-mb-4 lxjh01">-->
+            <!--<img class="cursor-pointer lxjhimg" src="../img/img04/img0404.png" alt="" style="width:100%">-->
+            <!--<div class="bg-lanse font-baise ybqjfontsize14px text-align-j overflow-hidden hidden-mb lxjhzw">-->
+                <!--<p class="ybqjfontsize14px font-weight-bold text-align-c font-baise lxjhzwtitle">-->
+                    <!--九月国际生-->
+                <!--</p>-->
+                <!--&emsp;&emsp;针对所有非欧盟国家的学生进行招生的留学途径，其中包括了所有的国立大学和部分的私立院校的招生。-->
+                <!--艺术留学广场的意大利留学专家团队根据10多年的工作经验，提醒参加该项目申请的留学生务必要在国内准-->
+                <!--备好语言的学习，尽量在9月份前达到意大利语B2水平的等级要求，这样才能保证将来进入专业课阶段顺利的学习。-->
+            <!--</div>-->
+            <!--<div class="text-align-c lxjhljxq">-->
+                <!--<span class="bg-lanse font-baise border-radius-5px cursor-pointer">了解详情</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!-- 语言学校 -->
+    <div class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold lxjhtitle yyxxbs">语言学校</div>
+    <!-- 语言学校-图片 -->
+    <img src="/uploads/lunbo/{$langpic['pic_path']}" alt="{$langpic['pic_tags']}" style="width:100%">
+    <!-- 语言学校-等级考试 -->
+    <div class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse djkstitle">等级考试</div>
+    <div class="row djks02">
+        {foreach $grade as $vo}
+            <div class="col-tl-6 col-mb-6 djkszwfj01">
+                <div class="padding-lr-15px djkszw01">
+                    <img class="djkszwimg" src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}" style="width: 40%;">
+                    <p class="text-align-c ybqjfontsize20px font-weight-bold djkszwtitle">{$vo['title']}</p>
+                    <p class="text-align-j">
+                        <?php echo $vo['content'] ?>
+                    </p>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+    <!-- 语言学校-校园风采 -->
+    <div class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse djkstitle xyfctitle">校园风采</div>
+    <div class="row padding-l-15px">
+        {foreach $campus as $vo}
+            <div class="col-tl-4 col-mb-4 padding-l-0">
+                <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}" style="width:100%;">
+            </div>
+        {/foreach}
+    </div>
+    <!-- 热点资讯-游学 -->
+    <div class="row hidden-mb">
+        <!-- 热点资讯 -->
+        <div class="col-tl-6 rdzx">
+            <div class="lxjhtitle">
+                <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">热点资讯</span>
+                <span class="float-r cursor-pointer">更多></span>
+            </div>
+            {foreach $hotnews as $vo}
+                <p class="ybqjfontsize14px font-heise">
+                    <i class="fa fa-caret-right font-lanse"></i>
+                    {$vo['new_title']}
+                    &nbsp;&nbsp;<span class="ybqjfontsize14px font-huise display-inline-block"><i class="fa fa-eye font-huise"></i>&nbsp;&nbsp;{$vo['browse_count']}</span>
+                </p>
+            {/foreach}
+        </div>
+        <!-- 游学 -->
+        <div class="col-tl-6 rdzx">
+            <div class="lxjhtitle">
+                <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">游学</span>
+                <span class="float-r cursor-pointer">更多></span>
+            </div>
+            <!-- 轮播图 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {foreach $tourpic as $vo}
+                        <div class="swiper-slide">
+                            <img src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width: 100%;">
+                        </div>
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 语言课程 -->
+    <div class="lxjhtitle">
+        <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">语言课程</span>
+        <span class="float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row padding-l-15px">
+        {foreach $lang as $vo}
+            <div class="col-tl-2 col-mb-4 padding-l-0">
+                <img class="cursor-pointer" src="/uploads/lunbo/{$vo['pic_path']}" alt="{$vo['pic_tags']}" style="width:100%">
+            </div>
+        {/foreach}
+    </div>
+    <!-- 院校推荐 -->
+    <div class="lxjhtitle">
+        <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">院校推荐</span>
+        <span class="float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row">
+        <div class="col-tl-2 text-align-c yxtjdh">
+            <div class="SourceHanSansCN-Bold font-baise bg-shenlanse">综合类</div>
+            <div class="SourceHanSansCN-Bold font-heise">艺术类-美术
+                <div class="overflow-hidden yxtjdh0201">
+                    <div class="ybqjfontsize14px SourceHanSansCN-Normal font-baise bg-shenlanse yxtjdh020101">美术</div>
+                    <div class="ybqjfontsize14px SourceHanSansCN-Normal yxtjdh020101">音乐</div>
+                    <div class="ybqjfontsize14px SourceHanSansCN-Normal yxtjdh020101">舞蹈</div>
+                </div>
+            </div>
+            <div class="SourceHanSansCN-Bold font-heise">私立</div>
+            <div class="SourceHanSansCN-Bold font-heise">合作院校</div>
+        </div>
+        <div class="col-tl-10 yxtjzw">
+            {volist name="schoollist" id="vo"}
+                <div class="col-tl-3 col-mb-3">
+                    <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['school_name']}" style="width:100%;">
+                    <div class="text-align-c font-size-14px overflow-hidden yxtjzw0102">{$vo['school_name']}</div>
+                </div>
+            {/volist}
+        </div>
+    </div>
+    <!-- 师资团队 -->
+    <div class="lxjhtitle">
+        <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">师资团队</span>
+        <span class="float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row sztd02">
+        {volist name="team" id="vo"}
+            {if ($i == 1) OR ($i == 5)}
+            <div class="col-tl-2 col-mb-6">
+                <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
+                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
+                <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty"><?php echo $vo['content'] ?></div>
+                <div class="text-align-c sztd020104">
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                </div>
+            </div>
+            {elseif $i == 4}
+            <div class="col-tl-3 hidden-mb">
+                <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
+                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
+                <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty"><?php echo $vo['content'] ?></div>
+                <div class="text-align-c sztd020104">
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                </div>
+            </div>
+            {else /}
+            <div class="col-tl-2 hidden-mb">
+                <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
+                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
+                <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty"><?php echo $vo['content'] ?></div>
+                <div class="text-align-c sztd020104">
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                </div>
+            </div>
+            {/if}
+        {/volist}
+    </div>
+    <!-- 办理流程 -->
+    <div class="lxjhtitle">
+        <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold">办理流程</span>
+        <span class="float-r cursor-pointer">更多></span>
+    </div>
+    <img class="lxblccimg" src="/static/Index/img/img04/img0419.png" alt="" style="width: 100%;">
+    <!-- 成功案例 -->
+    <div class="lxjhtitle">
+        <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">成功案例</span>
+        <span class="float-r cursor-pointer">更多></span>
+    </div>
+    <div class="row padding-l-15px cgal02">
+        {volist name="succanli" id="vo"}
+            {if ($i % 2 == 0)}
+            <div class="col-tl-2 col-mb-6 padding-l-0">
+                <div class="cgal020101">
+                    <h4 class="font-heise text-align-c cgal02010101">{$vo['title']}</h4>
+                    <!--<div class="font-size-12px cgal02010102"><?php echo $vo['content']  ?></div>-->
+                    <div class="font-size-12px cgal02010102 cgal02010103"><?php echo $vo['content']  ?></div>
+                    <img src="/uploads/Overstudy/{$vo['img']}" alt="" style="width: 100%;">
+                </div>
+            </div>
+            {else/}
+            <div class="col-tl-2 col-mb-6 padding-l-0">
+                <div class="cgal020101">
+                    <img src="/uploads/Overstudy/{$vo['img']}" alt="" style="width: 100%;">
+                    <h4 class="font-heise text-align-c cgal02010101">{$vo['title']}</h4>
+                    <div class="font-size-12px cgal02010102"><?php echo $vo['content']  ?></div>
+                    <!--<div class="font-size-12px cgal02010102 cgal02010103">成功留学：米兰理工</div>-->
+                </div>
+            </div>
+            {/if}
+        {/volist}
+    </div>
+</div>
+<script>
+    $(".lxjhzw").height($(".lxjhimg").height());
+    $(".djkszw02").height($(".djkszw01").height());
+</script>
+
+{include file="../../../public/public/index/footer"}<script src="../footer.js"></script>
+
+</body>
+
+</html>
