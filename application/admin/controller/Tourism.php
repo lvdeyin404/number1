@@ -80,20 +80,21 @@ class Tourism extends Common
             //接收参数
             $data = $request->param();
             $title = $data['title'];
-            $author = $data['tag'];
-            $source = $data['aux_tag'];
+            $source = $data['tag'];
+//            $source = $data['aux_tag'];
             $cate_id = $data['cate_id'];
             $is_Release = $data['is_status'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //判断是否输入title
             if(empty($title)){
                 return Util::show('0','请输入标题');
             }
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $title = html_entity_decode($title);
-            $title = strip_tags($title);
+//            $title = strip_tags($title);
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p><span>");
+//            $content = strip_tags($content,"<p><span>");
             //图片文件
             $file = $request->file('image');
             //判断是否有文件上传
@@ -124,9 +125,10 @@ class Tourism extends Common
             $add['title'] = $title;
             $add['content'] = $content;
             $add['tag'] = $source;
-            $add['aux_tag'] = $author;
+//            $add['aux_tag'] = $author;
             $add['cate_id'] = $cate_id;
             $add['is_status'] = $is_Release;
+            $add['two_content'] = $two_content;
             $res = Db::table('tourism')->insert($add);
             if($res){
                 return Util::show(1,'添加成功');
@@ -162,12 +164,13 @@ class Tourism extends Common
             $id = $data['id'];
             $title = $data['title'];
             $tag = $data['tag'];
-            $aux_tag = $data['aux_tag'];
+//            $aux_tag = $data['aux_tag'];
             $is_status = $data['is_status'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p><span>");
+//            $content = strip_tags($content,"<p><span>");
             //判断参数是否为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -176,8 +179,9 @@ class Tourism extends Common
             $updata['title'] = $title;
             $updata['content'] = $content;
             $updata['tag'] = $tag;
-            $updata['aux_tag'] = $aux_tag;
+//            $updata['aux_tag'] = $aux_tag;
             $updata['is_status'] = $is_status;
+            $updata['two_content'] = $two_content;
             $res = Db::table('tourism')->where(['id'=>$id])->update($updata);
             if($res == 1 || $res == 0){
                 return Util::show(1,'修改成功');

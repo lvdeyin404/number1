@@ -1,0 +1,41 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-{$newscate}</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- 当前位置-文章 -->
+<div class="container">
+    <!-- 当前位置 -->
+    <div class="font-huise overflow-hidden lxjhtitle gsdsjarticledqwz">
+        <span class="ybqjfontsize24px font-heise SourceHanSansCN-Normal">当前位置：</span>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(window.location.href='http://{$host}/{$titleUrl}')">{$titleCate}</span>&nbsp;>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(0)">{$newscate}</span>
+    </div>
+    <!--列表 -->
+    <div class="rdzxlist">
+        {foreach $planlist as $vo}
+            <p class="ybqjfontsize16px font-heise" onclick="javascript:void(window.location.href='http://{$host}/{$showurl}?id={$vo[\'id\']}')">
+                <i class="fa fa-caret-right font-lanse"></i>
+                <?php echo $vo['title']; ?>
+            </p>
+        {/foreach}
+
+
+    </div>
+    <!--<div class="text-align-c rdzxlistfy">-->
+        <!--<span class="ybqjfontsize16px cursor-pointer">上一页</span>&emsp;&emsp;<span class="ybqjfontsize16px cursor-pointer">下一页</span>-->
+        <!--<br>-->
+        <!--<span class="ybqjfontsize16px">第<span>1</span>页</span>/<span class="ybqjfontsize16px">共<span>1</span>页</span>-->
+    <!--</div>-->
+    <div class="page">
+        {$planlist|raw}
+    </div>
+</div>
+
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

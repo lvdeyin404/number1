@@ -1,0 +1,36 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-游学</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- 当前位置-文章 -->
+<div class="container">
+    <!-- 当前位置 -->
+    <div class="font-huise overflow-hidden lxjhtitle gsdsjarticledqwz">
+        <span class="ybqjfontsize24px font-heise SourceHanSansCN-Normal">当前位置：</span>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(window.location.href='http://{$host}/Studytour')">游学</span>&nbsp;>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(0)">{$catetitle}</span>
+    </div>
+    <!--列表 -->
+    <div class="row rdzxlistfy">
+        <div class="col-tl-2 text-align-c yxtjdh">
+            <div class="SourceHanSansCN-Bold font-heise" onclick="javascript:void(window.location.href='http://{$host}/showTourList?cate_id=4')">冬令营</div>
+            <div class="SourceHanSansCN-Bold font-heise" onclick="javascript:void(window.location.href='http://{$host}/showTourList?cate_id=3')">夏令营</div>
+        </div>
+        <div class="col-tl-10 yxtjzw">
+            <div class="col-tl-4 col-mb-4">
+                {foreach $tourList as $vo}
+                <div class="text-align-c font-size-14px overflow-hidden yxtjzw0102 yxtjzwlist"onclick="javascript:void(window.location.href='http://{$host}/showTour?cate_id={$cate_id}&id={$vo[\'id\']}')">{$vo['title']}</div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

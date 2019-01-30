@@ -13,7 +13,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="{$tourList['title']}" placeholder="" id="title" name="title">
+                <input type="text" class="input-text" value="<?php echo $tourList['title']; ?>" placeholder="" id="title" name="title">
             </div>
         </div>
         <div class="row cl">
@@ -32,12 +32,12 @@
                 <input type="text" class="input-text" id="tag" value="{$tourList['tag']}"/>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">附加标签：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" id="aux_tag" value="{$tourList['aux_tag']}"/>
-            </div>
-        </div>
+        <!--<div class="row cl">-->
+            <!--<label class="form-label col-xs-4 col-sm-2">附加标签：</label>-->
+            <!--<div class="formControls col-xs-8 col-sm-9">-->
+                <!--<input type="text" class="input-text" id="aux_tag" value="{$tourList['aux_tag']}"/>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -72,6 +72,12 @@
                         <button type="button" class="btn btn-primary" onclick="upImage()">开始上传</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>简介：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$tourList['two_content']}" placeholder="" id="two_content" name="two_content">
             </div>
         </div>
         <div class="row cl">
@@ -115,6 +121,7 @@
         var aux_tag = $("#aux_tag").val();
         var cate_id = $("#cate_id").val();
         var is_status = $("#release").val();
+        var two_content = $("#two_content").val();
         var content = content;
         //提交服务器
         $.ajax({
@@ -127,6 +134,7 @@
                 tag:tag,
                 aux_tag:aux_tag,
                 is_status:is_status,
+                two_content:two_content,
                 content:content,
             },
             success: function (res) {

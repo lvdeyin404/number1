@@ -1,0 +1,44 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+<title>{$systemctl['web_title']}-{$newscate}</title>
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- 当前位置-文章 -->
+<div class="container">
+    <!-- 当前位置 -->
+    <div class="font-huise overflow-hidden lxjhtitle gsdsjarticledqwz">
+        <span class="ybqjfontsize24px font-heise SourceHanSansCN-Normal">当前位置：</span>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(window.location.href='http://{$host}/Tourisms')">旅游</span>&nbsp;>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(0)">{$newscate}</span>&nbsp;>
+        <span class="font-huise gsdsjarticledqwz04"><?php echo $newData['title']; ?></span>
+    </div>
+    <!--文章 -->
+    <div class="text-align-c ybqjfontsize24px font-heise gsdsjarticletitle"></div>
+    <article class="ybqjfontsize20px font-heise gsdsjarticlezw">
+        <?php echo $newData['content']; ?>
+    </article>
+    <div class="gsdsjarticlefy">
+        {if $is_pre}
+        <div class="cursor-pointer font-huise gsdsjarticlefy01" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$pre_id}')">上一篇：{$pre_title}</div>
+        {else/}
+        <div class="cursor-pointer font-huise gsdsjarticlefy01">上一篇：没有了</div>
+        {/if}
+
+        {if $is_next}
+        <div class="cursor-pointer font-qianheise" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$next_id}')">下一篇：{$next_title}</div>
+        {else/}
+        <div class="cursor-pointer font-huise gsdsjarticlefy01">下一篇：没有了</div>
+        {/if}
+
+    </div>
+</div>
+<script>
+    $(".gsdsjarticletitle").html($(".gsdsjarticledqwz04").html());
+</script>
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

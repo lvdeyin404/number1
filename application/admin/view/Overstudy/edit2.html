@@ -65,6 +65,13 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <!-- 加载编辑器的容器 -->
+                <textarea name="content" id="content">{$schoolList['content']}</textarea>
+            </div>
+        </div>
+        <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
                 <button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
             </div>
@@ -76,15 +83,27 @@
 {include file="../../../public/public/admin/footer"}
 <!--/_footer /作为公共模版分离出去-->
 
+<!-- 配置文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.all.js"></script>
+<script type="text/javascript" src="/static/js/ue.js"></script>
 <script type="text/javascript">
-
+    var content;
 
     <!--表单上传-->
     function article_save_submit(){
+        //获取编辑器内容
+        ue.ready(function() {
+            //获取html内容，返回: <p>hello</p>
+            content = ue.getContent();
+        });
+
         var id = $("#id").val();
         var name = $("#name").val();
         var cate = $("#cate").val();
         var is_status = $("#is_status").val();
+        var content = content;
         //提交服务器
         $.ajax({
             type: 'post',
@@ -94,6 +113,7 @@
                 is_status:is_status,
                 cate_id:cate,
                 name:name,
+                content:content,
             },
             success: function (res) {
                 res = eval("("+res+")");

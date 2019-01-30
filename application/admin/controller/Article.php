@@ -84,16 +84,17 @@ class Article extends Common
             $data = $request->param();
             $id = $data['id'];
             $title = $data['title'];
-            $author = $data['author'];
-            $source = $data['source'];
+//            $author = $data['author'];
+//            $source = $data['source'];
             $cate_id = $data['cate_id'];
             $is_Release = $data['is_Release'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 content只保留p
             $title = html_entity_decode($title);
-            $title = strip_tags($title);
+//            $title = strip_tags($title);
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p><span>");
+//            $content = strip_tags($content,"<p><span><img>");
             //判断参数是否为为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -101,10 +102,11 @@ class Article extends Common
             //修改数据库
             $updata['new_title'] = $title;
             $updata['new_content'] = $content;
-            $updata['source'] = $source;
+//            $updata['source'] = $source;
             $updata['cate_id'] = $cate_id;
-            $updata['author'] = $author;
+//            $updata['author'] = $author;
             $updata['is_Release'] = $is_Release;
+            $updata['two_content'] = $two_content;
             $res = Db::table('news')->where(['new_id'=>$id])->update($updata);
             if($res == 1 || $res == 0){
                 return Util::show(1,'修改成功');
@@ -121,20 +123,21 @@ class Article extends Common
             //接收参数
             $data = $request->param();
             $title = $data['title'];
-            $author = $data['author'];
-            $source = $data['source'];
+//            $author = $data['author'];
+//            $source = $data['source'];
             $cate_id = $data['cate_id'];
             $is_Release = $data['is_Release'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //判断是否输入title
             if(empty($title)){
                 return Util::show('0','请输入标题');
             }
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $title = html_entity_decode($title);
-            $title = strip_tags($title);
+//            $title = strip_tags($title);
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p>");
+//            $content = strip_tags($content,"<p><span><img>");
             //图片文件
             $file = $request->file('image');
             //判断是否有文件上传
@@ -164,10 +167,11 @@ class Article extends Common
             //修改数据库
             $add['new_title'] = $title;
             $add['new_content'] = $content;
-            $add['source'] = $source;
-            $add['author'] = $author;
+//            $add['source'] = $source;
+//            $add['author'] = $author;
             $add['cate_id'] = $cate_id;
             $add['is_Release'] = $is_Release;
+            $add['two_content'] = $two_content;
             $add['add_time'] = date('Y-m-d');
             $res = Db::table('news')->insert($add);
             if($res){

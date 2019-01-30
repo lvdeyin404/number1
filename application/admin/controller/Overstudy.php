@@ -59,6 +59,17 @@ class Overstudy extends Common
         return $this->fetch();
     }
 
+    //办理流程 显示数据
+    public function flow()
+    {
+        //获取数据
+        $playdata = Db::table('flow')->find();
+        $count = Db::table('flow')->count();
+        $this->assign('flowList',$playdata);
+        $this->assign('count',$count);
+        return $this->fetch();
+    }
+
     //成功案例 显示数据
     public function successanli()
     {
@@ -171,13 +182,14 @@ class Overstudy extends Common
             $is_Release = $data['is_status'];
             $cate_id = $data['cate_id'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //判断是否输入title
             if(empty($title)){
                 return Util::show('0','请输入标题');
             }
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p><span>");
+//            $content = strip_tags($content,"<p><span>");
             //图片文件
             $file = $request->file('image');
             //判断是否有文件上传
@@ -209,6 +221,7 @@ class Overstudy extends Common
             $add['content'] = $content;
             $add['is_status'] = $is_Release;
             $add['cate_id'] = $cate_id;
+            $add['two_content'] = $two_content;
             $res = Db::table('overstudy')->insert($add);
             if($res){
                 return Util::show(1,'添加成功');
@@ -235,6 +248,10 @@ class Overstudy extends Common
             $name = $data['name'];
             $cate_id = $data['cate_id'];
             $is_status = $data['is_status'];
+            $content = $data['content'];
+            //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 content只保留p
+            $content = html_entity_decode($content);
+            $content = strip_tags($content,"<p><span><img>");
             //图片文件
             $file = $request->file('image');
             //判断是否有文件上传
@@ -265,6 +282,7 @@ class Overstudy extends Common
             $add['school_name'] = $name;
             $add['pid'] = $cate_id;
             $add['is_status'] = $is_status;
+            $add['content'] = $content;
             $res = Db::table('school')->insert($add);
             if($res){
                 return Util::show(1,'添加成功');
@@ -331,9 +349,10 @@ class Overstudy extends Common
             $title = $data['title'];
             $is_status = $data['is_status'];
             $content = $data['content'];
+            $two_content = $data['two_content'];
             //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
             $content = html_entity_decode($content);
-            $content = strip_tags($content,"<p><span>");
+//            $content = strip_tags($content,"<p><span>");
             //判断参数是否为为空
             if(!$title){
                 return Util::show(0,'请输入标题');
@@ -342,6 +361,7 @@ class Overstudy extends Common
             $updata['title'] = $title;
             $updata['content'] = $content;
             $updata['is_status'] = $is_status;
+            $updata['two_content'] = $two_content;
             $res = Db::table('overstudy')->where(['id'=>$id])->update($updata);
             if($res == 1 || $res == 0){
                 return Util::show(1,'修改成功');
@@ -385,6 +405,10 @@ class Overstudy extends Common
             $name = $data['name'];
             $cate_id = $data['cate_id'];
             $is_status = $data['is_status'];
+            $content = $data['content'];
+            //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 content只保留p
+            $content = html_entity_decode($content);
+            $content = strip_tags($content,"<p><span><img>");
             //判断参数是否为为空
             if(!$name){
                 return Util::show(0,'请输入院校名称');
@@ -393,6 +417,7 @@ class Overstudy extends Common
             $updata['school_name'] = $name;
             $updata['is_status'] = $is_status;
             $updata['pid'] = $cate_id;
+            $updata['content'] = $content;
             $res = Db::table('school')->where(['id'=>$id])->update($updata);
             if($res == 1 || $res == 0){
                 return Util::show(1,'修改成功');
@@ -401,6 +426,45 @@ class Overstudy extends Common
             }
         }
     }
+
+    /**
+     * 修改 办理流程
+     * @param Request $request
+     * @return false|mixed|string
+     * @throws Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @throws \think\exception\PDOException
+     */
+    public function edit3(Request $request)
+    {
+        if($request->isGet()){
+            //接收参数
+            $id = $request->param('id');
+            //通过id获取文章信息
+            $overstudyData = Db::table('flow')->where(['id'=>$id])->find();
+            $this->assign('flowList',$overstudyData);
+            return $this->fetch();
+        }elseif ($request->isPost()){
+            //接收参数
+            $data = $request->param();
+            $id = $data['id'];
+            $content = $data['content'];
+            //全局过滤有转码  这里转换回来 否则前端不显示样式 防止xss 使用函数删除标签 只保留p
+            $content = html_entity_decode($content);
+//            $content = strip_tags($content,"<p><span>");
+            //修改数据库
+            $updata['content'] = $content;
+            $res = Db::table('flow')->where(['id'=>$id])->update($updata);
+            if($res == 1 || $res == 0){
+                return Util::show(1,'修改成功');
+            }else{
+                return Util::show(0,'修改失败');
+            }
+        }
+    }
+
 
     /**
      * 删除  (单个删除 批量删除)

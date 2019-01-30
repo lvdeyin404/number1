@@ -38,6 +38,12 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>简介：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="two_content" name="two_content">
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">内容：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <!--<textarea cols="150" rows="10" name="content" id="content"></textarea>-->
@@ -76,6 +82,7 @@
         var title = $("#title").val();
         var cate_id = $("#cate_id").val();
         var is_status = $("#is_status").val();
+        var two_content = $("#two_content").val();
         var content = content;
         var image = document.getElementById("image").files[0];
 
@@ -85,6 +92,7 @@
         fordata.append('content',content);
         fordata.append('cate_id',cate_id);
         fordata.append('image',image);
+        fordata.append('two_content',two_content);
         //提交服务器
         $.ajax({
             type: 'post',

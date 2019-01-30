@@ -1,6 +1,6 @@
 <!--_meta 作为公共模版分离出去-->
 {include file="../../../public/public/index/meta"}
-<title>{$systemctl['web_title']}-首页</title>
+<title>{$systemctl['web_title']}-公司大事记</title>
 <!--_header 作为公共模版分离出去-->
 {include file="../../../public/public/index/header"}
 
@@ -22,8 +22,8 @@
                         <img src="/uploads/Article/{$vo['pic_path']}" alt="" style="width:100%">
                     </div>
                     <div class="col-tl-7 gsdsjnew01020102">
-                        <p class="font-weight-bold ybqjfontsize20px">{$vo['new_title']}</p>
-                        <p><?php echo $vo['new_content'] ?></p>
+                        <p class="font-weight-bold ybqjfontsize20px" onclick="javascript:void(window.location.href='http://{$host}/showNews?id={$vo[\'new_id\']}&cate_id={$vo[\'cate_id\']}')">{$vo['new_title']}</p>
+                        <p>{$vo['two_content']}</p>
                         <P class="text-align-r"><?php echo substr($vo['add_time'],0,10); ?></P>
                     </div>
                 </div>

@@ -32,13 +32,13 @@
                 <span class="ml-5" style="font-size: 12px;color: red;">'热门' '上新' '促销'等 限3个汉字以内</span>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2" >附加标签：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" id="aux_tag" style="width: 100px" placeholder="附加标签"/>
-                <span class="ml-5" style="font-size: 12px;color: red;">'2018温泉季' 等 限5个汉字以内</span>
-            </div>
-        </div>
+        <!--<div class="row cl">-->
+            <!--<label class="form-label col-xs-4 col-sm-2" >附加标签：</label>-->
+            <!--<div class="formControls col-xs-8 col-sm-9">-->
+                <!--<input type="text" class="input-text" id="aux_tag" style="width: 100px" placeholder="附加标签"/>-->
+                <!--<span class="ml-5" style="font-size: 12px;color: red;">'2018温泉季' 等 限5个汉字以内</span>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">是否发布：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -55,6 +55,12 @@
                     <div id="fileList" class="uploader-list"></div>
                     <div id="filePicker">选择图片<input type="file" id="image" /></div>
                 </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>简介：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="two_content" name="two_content">
             </div>
         </div>
         <div class="row cl">
@@ -98,6 +104,7 @@
         var aux_tag = $("#aux_tag").val();
         var cate_id = $("#cate_id").val();
         var is_status = $("#release").val();
+        var two_content = $("#two_content").val();
         var image = document.getElementById("image").files[0];
         var content = content;
 
@@ -108,6 +115,7 @@
         fordata.append('cate_id',cate_id);
         fordata.append('is_status',is_status);
         fordata.append('image',image);
+        fordata.append('two_content',two_content);
         fordata.append('content',content);
         //提交服务器
         $.ajax({

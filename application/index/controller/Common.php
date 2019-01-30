@@ -48,4 +48,15 @@ class Common extends Controller
             }
         }
     }
+
+    //通过id查找所有子分类id
+    public function category_subId($data, &$rst, $id = 0)
+    {
+        foreach ($data as $v){
+            if($v['pid'] == $id){
+                $rst[] = $v['id'];
+            }
+//            $this->category_subId($data, $rst, $v['id']);
+        }
+    }
 }
