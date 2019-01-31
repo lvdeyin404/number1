@@ -42,17 +42,17 @@
     <!-- 美丽西西里专线 -->
     <div class="travel02 travel02bs">
         <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">美丽西西里专线</span>
-        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+        <span class="ybqjfontsize16px float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showTourismList?cate_id=1')">更多></span>
     </div>
     <div class="row">
         {foreach $domtour as $vo}
             <div class="col-tl-4 col-mb-6 overflow-hidden travel0301 travel0301ts01">
                 <img class="travel030101" src="/uploads/Tourism/{$vo['img']}" alt="{$vo['title']}" style="width:100%;">
                 <div class="travel030102">
-                    <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse">{$vo['title']}</span>
+                    <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}&cate_id=1')">{$vo['title']}</span>
                     <span class="ybqjfontsize14px font-hongse border-radius-5px xptype">{$vo['tag']}</span>
                 </div>
-                <div class="ybqjfontsize14px text-align-j">
+                <div class="ybqjfontsize14px text-align-j" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}&cate_id=1')">
                     <?php echo $vo['two_content'] ?>
                 </div>
             </div>
@@ -61,16 +61,16 @@
     <!-- 艾尤嘎纳温泉区 -->
     <div class="travel02">
         <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">艾尤嘎纳温泉区</span>
-        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+        <span class="ybqjfontsize16px float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showTourismList?cate_id=2')">更多></span>
     </div>
     <div class="row">
         {foreach $pertour as $vo}
         <div class="col-tl-4 col-mb-6 overflow-hidden travel0401 travel0301ts01">
             <img class="travel030101" src="/uploads/Tourism/{$vo['img']}" alt="{$vo['tag']}" style="width:100%;">
             <div class="travel030102 text-align-j">
-                <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse">{$vo['title']}</span>
+                <span class="ybqjfontsize20px SourceHanSansCN-Bold font-lanse" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}&cate_id=2')">{$vo['title']}</span>
                 <span class="font-weight-bold font-huise">|</span>
-                <span class="ybqjfontsize14px">
+                <span class="ybqjfontsize14px" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}&cate_id=2')">
                         <?php echo $vo['two_content']; ?>
                     </span>
             </div>
@@ -92,7 +92,7 @@
     <!-- 出游攻略 -->
     <div class="travel02">
         <span class="ybqjfontsize28px SourceHanSansCN-Bold font-lanse">出游攻略</span>
-        <span class="ybqjfontsize16px float-r cursor-pointer">更多></span>
+        <span class="ybqjfontsize16px float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showTourismList?cate_id=3')">更多></span>
     </div>
     <div class="row">
         <div class="col-tl-7 cxgl0201">
@@ -101,13 +101,13 @@
                     <img src="/uploads/Tourism/{$strategy[0]['img']}" alt="{$strategy[0]['tag']}" style="width:100%;">
                 </div>
                 <div class="col-tl-8">
-                    <h4 class="yywjh4" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$strategy[0][\'id\']}')"><?php echo $strategy[0]['title']; ?></h4>
+                    <h4 class="yywjh4" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$strategy[0][\'id\']}&cate_id=3')"><?php echo $strategy[0]['title']; ?></h4>
                     <p class="ybqjfontsize14px text-align-j yywjp">
                         <?php echo $strategy[0]['two_content']; ?>
                     </p>
                     <h4 class="yywjh4 font-lanse">相关攻略</h4>
                     {volist name="strategy" id="vo" offset="1" length='3'}
-                    <p class="ybqjfontsize14px text-align-j xgglp" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}')">
+                    <p class="ybqjfontsize14px text-align-j xgglp" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$vo[\'id\']}&cate_id=3')">
                         <i class="fa fa-caret-right"></i>
                         <?php echo $vo['title']; ?>
                     </p>

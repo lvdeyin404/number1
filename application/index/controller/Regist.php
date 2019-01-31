@@ -130,6 +130,16 @@ class Regist extends Common
             $currentPage = $news->currentPage();  //当前页数
             $allPage = $news->lastPage();   //总页数
             $newsData = $news->items();
+            //删除无用的字段
+            foreach ($newsData as $k=>$vo){
+                unset($newsData[$k]['new_content']);
+                unset($newsData[$k]['source']);
+                unset($newsData[$k]['author']);
+                unset($newsData[$k]['browse_count']);
+                unset($newsData[$k]['is_Release']);
+                unset($newsData[$k]['update_time']);
+                $newsData[$k]['add_time'] = substr($vo['add_time'],0, 10);
+            }
             return Util::show('2','OK', ["news"=>$newsData,"currentPage"=>$currentPage, "allPage"=>$allPage]);
 //        }
     }

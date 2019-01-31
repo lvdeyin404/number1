@@ -10,7 +10,7 @@
     <div class="font-huise overflow-hidden lxjhtitle gsdsjarticledqwz">
         <span class="ybqjfontsize24px font-heise SourceHanSansCN-Normal">当前位置：</span>
         <span class="cursor-pointer font-huise" onclick="javascript:void(window.location.href='http://{$host}/Tourisms')">旅游</span>&nbsp;>
-        <span class="cursor-pointer font-huise" onclick="javascript:void(0)">{$newscate}</span>&nbsp;>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(window.location.href='http://{$host}/showTourismList?cate_id={$cate_id}')">{$newscate}</span>&nbsp;>
         <span class="font-huise gsdsjarticledqwz04"><?php echo $newData['title']; ?></span>
     </div>
     <!--文章 -->
@@ -20,13 +20,13 @@
     </article>
     <div class="gsdsjarticlefy">
         {if $is_pre}
-        <div class="cursor-pointer font-huise gsdsjarticlefy01" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$pre_id}')">上一篇：{$pre_title}</div>
+        <div class="cursor-pointer font-huise gsdsjarticlefy01" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$pre_id}&cate_id={$cate_id}')">上一篇：{$pre_title}</div>
         {else/}
         <div class="cursor-pointer font-huise gsdsjarticlefy01">上一篇：没有了</div>
         {/if}
 
         {if $is_next}
-        <div class="cursor-pointer font-qianheise" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$next_id}')">下一篇：{$next_title}</div>
+        <div class="cursor-pointer font-qianheise" onclick="javascript:void(window.location.href='http://{$host}/showTravel?id={$next_id}&cate_id={$cate_id}')">下一篇：{$next_title}</div>
         {else/}
         <div class="cursor-pointer font-huise gsdsjarticlefy01">下一篇：没有了</div>
         {/if}

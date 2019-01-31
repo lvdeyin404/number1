@@ -31,10 +31,8 @@
     <div class="row">
         <div class="col-tl-8 text-align-j font-heise xctszw">
             <img class="visible-mb float-r" src="/static/Index/img/img05/img0504.png" alt="" style="width:46%;">
-            {foreach $tripchar as $vo}
-            <?php echo $vo['content']; ?>
+            <?php echo $tripchar['content']; ?>
             <br>
-            {/foreach}
         </div>
         <div class="col-tl-4 hidden-mb" onclick="javascript:void(window.location.href='http://{$host}/showTourList')">
             <img class="cursor-pointer" src="/static/Index/img/img05/img0504.png" alt="" style="width:100%;">

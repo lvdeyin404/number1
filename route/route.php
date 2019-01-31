@@ -24,6 +24,7 @@ Route::get('showSchool', 'index/Overstudy/showSchool');
 Route::get('showPlan', 'index/Overstudy/showPlan');
 Route::get('showHots', 'index/Overstudy/showHots');
 Route::get('showTeacher', 'index/Overstudy/showTeacher');
+Route::get('showTeacherList', 'index/Overstudy/showTeacherList');
 Route::get('showFlow', 'index/Overstudy/showFlow');
 Route::get('showOverLists', 'index/Overstudy/showOverLists');
 Route::get('showSchoolList', 'index/Overstudy/showSchoolList');
@@ -36,6 +37,7 @@ Route::get('Studytour', 'index/Studytour/index');
 Route::get('showTourList', 'index/Studytour/showTourList');
 Route::get('showTour', 'index/Studytour/showTour');
 Route::get('Tourisms', 'index/Tourisms/index');
+Route::get('showTourismList', 'index/Tourisms/showTourismList');
 Route::get('showTravel', 'index/Tourisms/showTravel');
 return [
 

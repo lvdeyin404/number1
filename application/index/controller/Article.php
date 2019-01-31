@@ -18,7 +18,7 @@ class Article extends Common
         $picpaths = Db::table('picture')->where(['cate_id'=>3,'is_status'=>1])->find();
 
         //公司新闻 cate_id=1  is_status=1
-        $newsGs = Db::table('news')->where('cate_id',1)->where(['is_Release'=>1])->paginate(5);
+        $newsGs = Db::table('news')->where('cate_id',1)->where(['is_Release'=>1])->order('new_id desc')->paginate(5);
 
         //公司新闻 cate_id=1  is_status=1
         $newsHy = Db::table('news')->where('cate_id',2)->where(['is_Release'=>1])->paginate(5);

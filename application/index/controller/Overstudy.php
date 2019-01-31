@@ -456,6 +456,33 @@ class Overstudy extends Common
         }
     }
 
+    //显示 师资团队 成功案例 列表页
+    public function showTeacherList(Request $request)
+    {
+        if($request->isGet()){
+            //获得分类id
+            $cate_id = $request->get('cate_id');
+
+            //查询数据
+            $listData = Db::table('overstudy')->where(['cate_id'=>$cate_id, 'is_status'=>1])->paginate(4,false,['query' => request()->param()]);
+
+            //获取分类
+            switch ($cate_id){
+                case "4":
+                    $catetitle = "师资团队";
+                    break;
+                case "5":
+                    $catetitle = "成功案例";
+                    break;
+            }
+
+            $this->assign('cate_id', $cate_id);
+            $this->assign('catetitle', $catetitle);
+            $this->assign('listdata', $listData);
+            return $this->fetch();
+        }
+    }
+
     //显示办理流程详情
     public function showFlow(Request $request)
     {

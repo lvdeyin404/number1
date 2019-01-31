@@ -1,0 +1,49 @@
+<!--_meta 作为公共模版分离出去-->
+{include file="../../../public/public/index/meta"}
+
+<!--_header 作为公共模版分离出去-->
+{include file="../../../public/public/index/header"}
+
+<!-- 当前位置-文章 -->
+<div class="container">
+    <!-- 当前位置 -->
+    <div class="font-huise overflow-hidden lxjhtitle gsdsjarticledqwz">
+        <span class="ybqjfontsize24px font-heise SourceHanSansCN-Normal">当前位置：</span>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(window.location='http://{$host}/Overstudy')">留学</span>&nbsp;>
+        <span class="cursor-pointer font-huise" onclick="javascript:void(0)">{$catetitle}</span>
+    </div>
+    <!--列表 -->
+    <div class="row rdzxlistfy">
+        <div class="col-tl-10 yxtjzw">
+            {if $cate_id == 4}
+                {foreach $listdata as $vo}
+                    <div class="col-tl-3 col-mb-3">
+                        <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}" style="width:100%;">
+                        <div class="text-align-c font-size-14px" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')">{$vo['title']}</div>
+                        <div class="text-align-c font-size-14px" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')")">{$vo['two_content']}</div>
+                    </div>
+                {/foreach}
+            {else /}
+                {foreach $listdata as $vo}
+                <div class="col-tl-3 col-mb-3">
+                    <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}" style="width:100%;">
+                    <div class="text-align-c font-size-14px" >{$vo['title']}</div>
+                    <div class="text-align-c font-size-14px" ><?php echo $vo['content']; ?></div>
+                </div>
+                {/foreach}
+            {/if}
+        </div>
+    </div>
+    <div class="text-align-c rdzxlistfy">
+        <!--<span class="ybqjfontsize16px cursor-pointer">上一页</span>&emsp;&emsp;<span class="ybqjfontsize16px cursor-pointer">下一页</span>-->
+        <!--<br>-->
+        <!--<span class="ybqjfontsize16px">第<span>1</span>页</span>/<span class="ybqjfontsize16px">共<span>1</span>页</span>-->
+        {$listdata|raw}
+    </div>
+</div>
+
+{include file="../../../public/public/index/footer"}
+
+</body>
+
+</html>

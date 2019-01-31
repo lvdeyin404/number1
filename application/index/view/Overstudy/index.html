@@ -19,7 +19,7 @@
                     <p class="ybqjfontsize14px font-weight-bold text-align-c font-baise lxjhzwtitle">
                         {$vo['title']}
                     </p>
-                    &emsp;&emsp;<?php echo $vo['content'] ?>
+                    &emsp;&emsp;<?php echo $vo['two_content'] ?>
                 </div>
                 <div class="text-align-c lxjhljxq">
                     <span class="bg-lanse font-baise border-radius-5px cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showPlan?id={$vo[\'id\']}')">了解详情</span>
@@ -197,35 +197,35 @@
     <!-- 师资团队 -->
     <div class="lxjhtitle">
         <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold">师资团队</span>
-        <span class="float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showOverLists?cate_id=4')">更多></span>
+        <span class="float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showTeacherList?cate_id=4')">更多></span>
     </div>
     <div class="row sztd02">
         {volist name="team" id="vo"}
             {if ($i == 1) OR ($i == 5)}
             <div class="col-tl-2 col-mb-6">
                 <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
-                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
+                <h4 class="font-heise text-align-c overflow-hidden teachername" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')">{$vo['title']}</h4>
                 <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')"><?php echo $vo['two_content'] ?></div>
                 <div class="text-align-c sztd020104">
-                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px" onclick="javascript:void(window.location.href='http://{$host}/showTeacherList?cate_id=4')">更多></span>
                 </div>
             </div>
             {elseif $i == 4}
             <div class="col-tl-3 hidden-mb">
                 <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
-                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
+                <h4 class="font-heise text-align-c overflow-hidden teachername" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')">{$vo['title']}</h4>
                 <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')"><?php echo $vo['two_content'] ?></div>
                 <div class="text-align-c sztd020104">
-                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px" onclick="javascript:void(window.location.href='http://{$host}/showTeacherList?cate_id=4')">更多></span>
                 </div>
             </div>
             {else /}
             <div class="col-tl-2 hidden-mb">
                 <img src="/uploads/Overstudy/{$vo['img']}" alt="{$vo['title']}">
-                <h4 class="font-heise text-align-c overflow-hidden teachername">{$vo['title']}</h4>
-                <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty"><?php echo $vo['two_content'] ?></div>
+                <h4 class="font-heise text-align-c overflow-hidden teachername" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')">{$vo['title']}</h4>
+                <div class="ybqjfontsize14px text-align-c overflow-hidden teacherduty" onclick="javascript:void(window.location.href='http://{$host}/showTeacher?id={$vo[\'id\']}')"><?php echo $vo['two_content'] ?></div>
                 <div class="text-align-c sztd020104">
-                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px">更多></span>
+                    <span class="font-lanse01 font-size-14px cursor-pointer font-weight-bold border-radius-5px" onclick="javascript:void(window.location.href='http://{$host}/showTeacherList?cate_id=4')">更多></span>
                 </div>
             </div>
             {/if}
@@ -240,7 +240,7 @@
     <!-- 成功案例 -->
     <div class="lxjhtitle">
         <span class="ybqjfontsize28px font-lanse SourceHanSansCN-Bold ">成功案例</span>
-        <span class="float-r cursor-pointer">更多></span>
+        <span class="float-r cursor-pointer" onclick="javascript:void(window.location.href='http://{$host}/showTeacherList?cate_id=5')">更多></span>
     </div>
     <div class="row padding-l-15px cgal02">
         {volist name="succanli" id="vo"}
